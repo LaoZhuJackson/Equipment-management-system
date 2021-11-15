@@ -1,0 +1,174 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font: "微软雅黑";
+}
+
+.content {
+    position: relative;
+    /* 1vw等于视口宽度的1% */
+    width: 100vw;
+    height: 100vh;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+    .content::before {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 300%;
+        height: 100%;
+        background-image: linear-gradient(to bottom right, rgb(20,0,255),rgb(111,0,255),rgb(242,0,255));
+        /* 对图像应用模糊效果 */
+        filter: blur(4px);
+        /* animation 属性是一个简写属性，用于设置六个动画属性 */
+        /*        选择器名称 时间 速度曲线   开始延迟 播放次数 */
+        animation: bg-anim 10s alternate infinite linear;
+        /* alternate：动画应该轮流反向播放 */
+        /* infinite	规定动画应该无限次播放 */
+        /* linear 动画从头到尾的速度是相同的 */
+    }
+/* 创建动画，左边缘从0%到-200% */
+@keyframes bg-anim {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -200%;
+    }
+}
+
+.login-box {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(74,0,170,0.3);
+    border-radius: 30px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    /* 横向：justify-content
+    纵向：align-items */
+    align-items: center;
+}
+    /* ">"子选择器，只选择直接后代 */
+    .login-box > h1 {
+        margin: 50px 0 10px 0;
+        font-size: 64px;
+    }
+
+    .login-box #lblMsg{
+        display:flex;
+        justify-content:center;
+    }
+
+    .output-frame {
+        margin-top: 20px;
+        width: 300px;
+        height: 40px;
+        display: flex;
+    }
+
+    .output-frame .validator {
+        margin-left:10px;
+        opacity:0.7;
+
+        display:flex;
+        align-items:center;
+    }
+
+    .output-frame #username {
+        font-size: 16px;
+        width: 64px;
+        background-color: rgba(212,0,219,0.6);
+        border-radius: 40px 10px 10px 40px;
+        /* text-indent 属性规定文本块中首行文本的缩进 */
+        text-indent: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .output-frame #password {
+        font-size: 16px;
+        width: 64px;
+        background-color: rgba(212,0,219,0.6);
+        border-radius: 40px 10px 10px 40px;
+        /* text-indent 属性规定文本块中首行文本的缩进 */
+        text-indent: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .output-frame > input {
+        /* 设置的是弹性项目的弹性长度 */
+        flex: 1;
+        width: 0;
+        margin-left: 6px;
+        /* 通过填充使输入内容离输入框有一定距离 */
+        padding: 0 20px 0 10px;
+        border-radius: 10px 40px 40px 10px;
+        outline: none;
+        border: none;
+        font-size: 20px;
+        font-weight: 600;
+        background-color: rgba(74,0,170,0.3);
+        color: #fff;
+    }
+
+        .output-frame > input:focus {
+            color: #000;
+            background-color: #fff;
+        }
+
+.login-btn {
+    margin-top: 30px;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: rgba(212,0,219,0.3);
+    color: #fff;
+    border-radius: 40px;
+    transition: all 0.2s ease;
+}
+
+    .login-btn:focus{
+        outline:none;
+        border:none;
+    }
+
+    .login-btn:hover {
+        background-color: rgba(212,0,219, 0.8);
+    }
+
+    .login-box .help {
+        width: 300px;
+        height: 56px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .login-box .help a {
+            width: 100px;
+            height: 30px;
+            font-size: 15px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(212,0,219, 0);
+            transition: all 0.4s ease;
+        }
+
+        .login-box .help a:hover {
+            background-color: rgba(212,0,219, 0.3);
+        }
