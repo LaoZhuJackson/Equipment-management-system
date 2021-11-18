@@ -72,11 +72,15 @@
     <Content Include="App_Data\infoDB_log.ldf">
       <DependentUpon>infoDB.mdf</DependentUpon>
     </Content>
+    <Content Include="css\default.css" />
+    <Content Include="css\forget.css" />
     <Content Include="css\login.css" />
     <Content Include="css\login2.css" />
     <Content Include="Default.aspx" />
     <Content Include="forget.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\laozhu.gif" />
+    <Content Include="js\default.js" />
     <Content Include="js\login.js" />
     <Content Include="login.aspx" />
     <Content Include="login2.aspx" />

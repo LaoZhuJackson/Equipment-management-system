@@ -15,24 +15,9 @@ body {
     min-height: 100vh;
     background-color: #003F5C;
     /* 添加渐变 */
-    background-image:
-        radial-gradient(closest-side, #543864, #54386400),
-        radial-gradient(closest-side, #543864, #54386400),
-        radial-gradient(closest-side, #1F4068, #1F406800),
-        radial-gradient(closest-side, #8B4367, #8B436700),
-        radial-gradient(closest-side, #FF6464, #FF646400);
-    background-size:
-        130vmax 130vmax,
-        80vmax 80vmax,
-        90vmax 90vmax,
-        110vmax 110vmax,
-        90vmax 90vmax;
-    background-position:
-        -80vmax -80vmax,
-        60vmax 60vmax,
-        10vmax 10vmax,
-        -30vmax -10vmax,
-        50vmax 50vmax;
+    background-image: radial-gradient(closest-side, #543864, #54386400), radial-gradient(closest-side, #543864, #54386400), radial-gradient(closest-side, #1F4068, #1F406800), radial-gradient(closest-side, #8B4367, #8B436700), radial-gradient(closest-side, #FF6464, #FF646400);
+    background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax, 110vmax 110vmax, 90vmax 90vmax;
+    background-position: -80vmax -80vmax, 60vmax 60vmax, 10vmax 10vmax, -30vmax -10vmax, 50vmax 50vmax;
     background-repeat: no-repeat;
     animation: 10s movement linear infinite;
     /* background-color: #f6f5f7; */
@@ -40,64 +25,24 @@ body {
 
 @keyframes movement {
 
-    0%,
-    100% {
-        background-size:
-            130vmax 130vmax,
-            80vmax 80vmax,
-            90vmax 90vmax,
-            110vmax 110vmax,
-            90vmax 90vmax;
-        background-position:
-            -80vmax -80vmax,
-            60vmax 60vmax,
-            10vmax 10vmax,
-            -30vmax -10vmax,
-            50vmax 50vmax;
+    0%, 100% {
+        background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax, 110vmax 110vmax, 90vmax 90vmax;
+        background-position: -80vmax -80vmax, 60vmax 60vmax, 10vmax 10vmax, -30vmax -10vmax, 50vmax 50vmax;
     }
 
     25% {
-        background-size:
-            100vmax 130vmax,
-            90vmax 90vmax,
-            100vmax 100vmax,
-            90vmax 90vmax,
-            60vmax 60vmax;
-        background-position:
-            -60vmax -90vmax,
-            50vmax -40vmax,
-            0vmax -20vmax,
-            -40vmax -20vmax,
-            40vmax 60vmax;
+        background-size: 100vmax 130vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 60vmax 60vmax;
+        background-position: -60vmax -90vmax, 50vmax -40vmax, 0vmax -20vmax, -40vmax -20vmax, 40vmax 60vmax;
     }
 
     50% {
-        background-size:
-            80vmax 80vmax,
-            110vmax 110vmax,
-            80vmax 80vmax,
-            60vmax 60vmax,
-            80vmax 80vmax;
-        background-position:
-            -50vmax -70vmax,
-            40vmax -30vmax,
-            10vmax 0vmax,
-            20vmax 10vmax,
-            30vmax 70vmax;
+        background-size: 80vmax 80vmax, 110vmax 110vmax, 80vmax 80vmax, 60vmax 60vmax, 80vmax 80vmax;
+        background-position: -50vmax -70vmax, 40vmax -30vmax, 10vmax 0vmax, 20vmax 10vmax, 30vmax 70vmax;
     }
-    75%{
-        background-size:
-            90vmax 90vmax,
-            90vmax 90vmax,
-            100vmax 100vmax,
-            90vmax 90vmax,
-            70vmax 70vmax;
-        background-position:
-            -50vmax -40vmax,
-            50vmax -30vmax,
-            20vmax 0vmax,
-            -10vmax 10vmax,
-            40vmax 60vmax;
+
+    75% {
+        background-size: 90vmax 90vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 70vmax 70vmax;
+        background-position: -50vmax -40vmax, 50vmax -30vmax, 20vmax 0vmax, -10vmax 10vmax, 40vmax 60vmax;
     }
 }
 
@@ -117,9 +62,9 @@ a {
     font-size: 12px;
 }
 
-a:hover {
-    color: rgb(167, 167, 167);
-}
+    a:hover {
+        color: rgb(167, 167, 167);
+    }
 
 p {
     margin: 10px 0 30px;
@@ -137,11 +82,11 @@ p {
     transition: transform 80ms ease-in;
 }
 
-/* 被点击时 */
-.button:active {
-    /* 缩放为95% */
-    transform: scale(.95);
-}
+    /* 被点击时 */
+    .button:active {
+        /* 缩放为95% */
+        transform: scale(.95);
+    }
 
 .container {
     position: relative;
@@ -153,6 +98,7 @@ p {
     border-radius: 10px;
     overflow: hidden;
 }
+
 .form-container {
     position: absolute;
     top: 0;
@@ -173,28 +119,28 @@ p {
     color: #f2f2f2;
 }
 
-.sign-in-container .forget {
-    color: #f2f2f2b2;
-}
+    .sign-in-container .forget {
+        color: #f2f2f2b2;
+    }
 
-.sign-in-container .forget:hover {
-    color: #f2f2f2;
-}
+        .sign-in-container .forget:hover {
+            color: #f2f2f2;
+        }
 
-.sign-in-container .input {
-    background-color: rgb(240, 240, 240);
-}
+    .sign-in-container .input {
+        background-color: rgb(240, 240, 240);
+    }
 
-.sign-in-container .button {
-    background: #34373c;
-    color: #f2f2f2;
-    transition: all 0.4s ease;
-}
+    .sign-in-container .button {
+        background: #34373c;
+        color: #f2f2f2;
+        transition: all 0.4s ease;
+    }
 
-.sign-in-container .button:hover {
-    color: #34373c;
-    background-color: #f2f2f2;
-}
+        .sign-in-container .button:hover {
+            color: #34373c;
+            background-color: #f2f2f2;
+        }
 
     .sign-in-container .social-container a {
         border: 1px solid #ddd;
@@ -202,11 +148,11 @@ p {
         transition: all 0.4s ease;
     }
 
-.sign-in-container .social-container a:hover {
-    color: #34373c;
-    background-color: #e4e4e4;
-    border-color: rgb(114, 116, 117);
-}
+        .sign-in-container .social-container a:hover {
+            color: #34373c;
+            background-color: #e4e4e4;
+            border-color: rgb(114, 116, 117);
+        }
 
 /* 注册 */
 .sign-up-container {
@@ -216,31 +162,31 @@ p {
     background-color: rgb(227, 227, 228);
 }
 
-.sign-up-container .input {
-    background-color: rgb(248, 248, 248);
-}
+    .sign-up-container .input {
+        background-color: rgb(248, 248, 248);
+    }
 
-.sign-up-container .button {
-    color: #34373c;
-    background: #f2f2f2;
-    transition: all 0.4s ease;
-}
+    .sign-up-container .button {
+        color: #34373c;
+        background: #f2f2f2;
+        transition: all 0.4s ease;
+    }
 
-.sign-up-container .button:hover {
-    color: #f2f2f2;
-    background-color: #34373c;
-}
+        .sign-up-container .button:hover {
+            color: #f2f2f2;
+            background-color: #34373c;
+        }
 
     .sign-up-container .social-container a {
         border: 1px solid #34373c;
         transition: all 0.4s ease;
     }
 
-.sign-up-container .social-container a:hover {
-    color: #fff;
-    background: #222f3e;
-    border-color: #cbcbcc;
-}
+        .sign-up-container .social-container a:hover {
+            color: #fff;
+            background: #222f3e;
+            border-color: #cbcbcc;
+        }
 
 .form-container .form {
     width: 100%;
@@ -263,19 +209,19 @@ p {
     margin: 10px 0;
 }
 
-.social-container a {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    /* 变成圆框 */
-    border-radius: 50%;
-    /* 左右居中对齐 */
-    text-align: center;
-    /* 利用行间距居中 */
-    line-height: 40px;
-    color: #333;
-    margin: 0 5px;
-}
+    .social-container a {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        /* 变成圆框 */
+        border-radius: 50%;
+        /* 左右居中对齐 */
+        text-align: center;
+        /* 利用行间距居中 */
+        line-height: 40px;
+        color: #333;
+        margin: 0 5px;
+    }
 
 .overlay-container {
     position: absolute;
@@ -308,10 +254,10 @@ p {
     text-align: center;
 }
 
-.overlay-panel p {
-    font-size: 12px;
-    margin: 10px 0 15px;
-}
+    .overlay-panel p {
+        font-size: 12px;
+        margin: 10px 0 15px;
+    }
 
 /* 右覆盖 */
 .overlay-right-container {
@@ -321,17 +267,17 @@ p {
     right: 0;
 }
 
-.overlay-right-container .button {
-    background-color: transparent;
-    color: #f2f2f2;
-    border: 1px solid #f2f2f2;
-    transition: all 0.4s ease;
-}
+    .overlay-right-container .button {
+        background-color: transparent;
+        color: #f2f2f2;
+        border: 1px solid #f2f2f2;
+        transition: all 0.4s ease;
+    }
 
-.overlay-right-container .button:hover {
-    background-color: #f2f2f2;
-    color: #34373c;
-}
+        .overlay-right-container .button:hover {
+            background-color: #f2f2f2;
+            color: #34373c;
+        }
 
 /* 左覆盖 */
 .overlay-left-container {
@@ -340,17 +286,17 @@ p {
     color: #34373c;
 }
 
-.overlay-left-container .button {
-    background-color: transparent;
-    color: #34373c;
-    border: 1px solid #34373c;
-    transition: all 0.4s ease;
-}
+    .overlay-left-container .button {
+        background-color: transparent;
+        color: #34373c;
+        border: 1px solid #34373c;
+        transition: all 0.4s ease;
+    }
 
-.overlay-left-container .button:hover {
-    background-color: #34373c;
-    color: #f2f2f2;
-}
+        .overlay-left-container .button:hover {
+            background-color: #34373c;
+            color: #f2f2f2;
+        }
 
 .container.active .sign-in-container {
     /* 注册表单往左移动 */

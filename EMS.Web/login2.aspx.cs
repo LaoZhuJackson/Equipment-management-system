@@ -11,23 +11,11 @@ namespace EMS.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            //实现聚焦时去掉文字提示，失焦时出现文字提示
-            username_up.Attributes.Add("OnFocus", "if(this.value=='Username...') {this.value=''}");
-            username_up.Attributes.Add("OnBlur", "if(this.value=='') {this.value='Username...'}");
-            username_in.Attributes.Add("OnFocus", "if(this.value=='Username...') {this.value=''}");
-            username_in.Attributes.Add("OnBlur", "if(this.value=='') {this.value='Username...'}");
-            phone_up.Attributes.Add("OnFocus", "if(this.value=='Phone...') {this.value=''}");
-            phone_up.Attributes.Add("OnBlur", "if(this.value=='') {this.value='Phone...'}");
-
-            //password_up.Attributes.Add("OnFocus", "if(this.value=='Password...') {this.value=''}");
-            //password_up.Attributes.Add("OnBlur", "if(this.value=='') {this.value='Password...'}");
-            //password_in.Attributes.Add("OnFocus", "if(this.value=='Password...') {this.value=''}");
-            //password_in.Attributes.Add("OnBlur", "if(this.value=='') {this.value='Password...'}");
         }
 
         protected void sign_in_btn_Click(object sender, EventArgs e)
         {
-            if (!(visiterService.is_none(username_in.Text.Trim())||visiterService.is_none(password_in.Text.Trim())))
+            if (!(visiterService.is_none(username_in.Text.Trim()) || visiterService.is_none(password_in.Text.Trim())))
             {
                 //获取用户id
                 int visiterId = visiterService.CheckLogin(username_in.Text.Trim(), password_in.Text.Trim());
@@ -56,7 +44,7 @@ namespace EMS.Web
                     password_in.Text = "";
                 }
             }
-            else
+            else//存在空值
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "is_none", "<script type='text/javascript'>none_alert();</script>");
             }
@@ -64,7 +52,7 @@ namespace EMS.Web
 
         protected void sign_up_btn_Click(object sender, EventArgs e)
         {
-            if(!(visiterService.is_none(username_up.Text.Trim()) || visiterService.is_none(password_up.Text.Trim()) || visiterService.is_none(phone_up.Text.Trim()) || visiterService.is_none(confirm_password_up.Text.Trim())))
+            if (!(visiterService.is_none(username_up.Text.Trim()) || visiterService.is_none(password_up.Text.Trim()) || visiterService.is_none(phone_up.Text.Trim()) || visiterService.is_none(confirm_password_up.Text.Trim())))
             {
                 if (visiterService.confirm_password(password_up.Text.Trim(), confirm_password_up.Text.Trim()))//如果两次密码相同
                 {
@@ -90,7 +78,7 @@ namespace EMS.Web
                     ClientScript.RegisterStartupScript(this.GetType(), "sign_up", "<script type='text/javascript'>sign_up();</script>");
                 }
             }
-            else
+            else//存在空值
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "is_none", "<script type='text/javascript'>none_alert();</script>");
                 //跳转到注册页面

@@ -1,0 +1,128 @@
+﻿@import url('https://fonts.font.im/css?family=Poppins:wght@300;400;500;600;700&display=swa');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    min-height: 100vh;
+    background-color: #003F5C;
+    /* 添加渐变 */
+    background-image: radial-gradient(closest-side, #543864, #54386400), radial-gradient(closest-side, #543864, #54386400), radial-gradient(closest-side, #1F4068, #1F406800), radial-gradient(closest-side, #8B4367, #8B436700), radial-gradient(closest-side, #FF6464, #FF646400);
+    background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax, 110vmax 110vmax, 90vmax 90vmax;
+    background-position: -80vmax -80vmax, 60vmax 60vmax, 10vmax 10vmax, -30vmax -10vmax, 50vmax 50vmax;
+    background-repeat: no-repeat;
+    animation: 10s movement linear infinite;
+}
+
+@keyframes movement {
+
+    0%, 100% {
+        background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax, 110vmax 110vmax, 90vmax 90vmax;
+        background-position: -80vmax -80vmax, 60vmax 60vmax, 10vmax 10vmax, -30vmax -10vmax, 50vmax 50vmax;
+    }
+
+    25% {
+        background-size: 100vmax 130vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 60vmax 60vmax;
+        background-position: -60vmax -90vmax, 50vmax -40vmax, 0vmax -20vmax, -40vmax -20vmax, 40vmax 60vmax;
+    }
+
+    50% {
+        background-size: 80vmax 80vmax, 110vmax 110vmax, 80vmax 80vmax, 60vmax 60vmax, 80vmax 80vmax;
+        background-position: -50vmax -70vmax, 40vmax -30vmax, 10vmax 0vmax, 20vmax 10vmax, 30vmax 70vmax;
+    }
+
+    75% {
+        background-size: 90vmax 90vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 70vmax 70vmax;
+        background-position: -50vmax -40vmax, 50vmax -30vmax, 20vmax 0vmax, -10vmax 10vmax, 40vmax 60vmax;
+    }
+}
+
+h2 {
+    color: #34373c;
+    font-size: 30px;
+    /* text-transform：定义大小写规范 */
+    /* capitalize	文本中的每个单词以大写字母开头。 */
+    text-transform: capitalize;
+    margin: 20px 0;
+}
+
+.button {
+    padding: 10px 50px;
+    /* transparent	默认值。边框颜色为透明。 */
+    border: 1px solid transparent;
+    border-radius: 20px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    outline: none;
+    color: #34373c;
+    background-color: #d3d2d2;
+    /* 变化持续时间 */
+    transition: transform 80ms ease-in;
+    transition: color 0.4s ease;
+    transition: background-color 0.4s ease;
+}
+
+    .button:hover {
+        color: #f2f2f2;
+        background-color: #34373c;
+    }
+
+    /* 被点击时 */
+    .button:active {
+        /* 缩放为95% */
+        transform: scale(.95);
+    }
+
+a {
+    display: inline-block;
+    height: 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #c2c2c294;
+    text-transform: capitalize;
+    font-size: 15px;
+    text-align: center;
+    line-height: 10px;
+}
+
+    a:hover {
+        color: #c2c2c2;
+    }
+
+.form {
+    position: relative;
+    border-radius: 10px;
+    width: 384px;
+    height: 480px;
+    background-image: linear-gradient(#f2f2f2, #34373c);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.20);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+    .form .form_sub {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 50px;
+    }
+
+    .form input {
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px;
+        border: none;
+        background-color: rgb(240, 234, 234);
+    }

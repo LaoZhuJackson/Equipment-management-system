@@ -13,5 +13,15 @@ namespace EMS.Web
         {
 
         }
+
+        protected void search_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ok_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
