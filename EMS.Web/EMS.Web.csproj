@@ -84,7 +84,6 @@
     <Content Include="js\login.js" />
     <Content Include="login.aspx" />
     <Content Include="login2.aspx" />
-    <Content Include="newUser.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -126,13 +125,6 @@
     <Compile Include="login2.aspx.designer.cs">
       <DependentUpon>login2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="newUser.aspx.cs">
-      <DependentUpon>newUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="newUser.aspx.designer.cs">
-      <DependentUpon>newUser.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +143,10 @@
     <ProjectReference Include="..\EMS.BLL\EMS.BLL.csproj">
       <Project>{6ecb88cf-2065-4750-bae9-2d20cd2967f9}</Project>
       <Name>EMS.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EMS.DAL\EMS.DAL.csproj">
+      <Project>{E856B6B0-52EF-4641-A1D5-6ED113A22E35}</Project>
+      <Name>EMS.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

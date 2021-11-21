@@ -32,19 +32,6 @@ namespace EMS.BLL
             }
         }
         /// <summary>
-        /// 通过id修改用户密码
-        /// </summary>
-        /// <param name="name">用户名</param>
-        /// <param name="password">新密码</param>
-        public void ChangePassword(string name, string password)
-        {
-            Employee_info employee = (from r in db.Employee_info
-                                      where r.name == name
-                                      select r).First();//如果查询的数据不存在， 则抛System.InvalidOperationException异常
-            employee.password = password;
-            db.SubmitChanges();
-        }
-        /// <summary>
         /// 判断是否重名
         /// </summary>
         /// <param name="name">输入的用户名</param>
@@ -114,7 +101,12 @@ namespace EMS.BLL
             else
                 return false;
         }
-
+        /// <summary>
+        /// 检测手机号
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="phone"></param>
+        /// <returns></returns>
         public bool confirm_phone(string username,string phone)
         {
             Employee_info Search_succeeded = (from r in db.Employee_info
@@ -125,7 +117,11 @@ namespace EMS.BLL
             else
                 return true;
         }
-
+        /// <summary>
+        /// 获取密码
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public string get_password(string username)
         {
             Employee_info search_password = (from r in db.Employee_info

@@ -5,24 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>登录页面</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/login2.css" />
     <script type="text/javascript">
-        function sign_in_alert() {
-            alert('账号或密码错误( ･´ω`･ )');
-        }
-        function none_alert() {
-            alert("所有选项不能为空ヽ(`Д´)ﾉ");
-        }
-        function name_exist_alert() {
-            alert("用户名已存在┐(ﾟ～ﾟ)┌ ");
-        }
-        function password_alert() {
-            alert("两次密码输入不相同(｡・`ω´･)");
-        }
-        function successful_message() {
-            alert("注册成功(｡◕ˇ∀ˇ◕)");
+        function alert_message(text) {
+            alert(text);
         }
         function sign_up() {
             container = document.getElementsByClassName('container')[0];

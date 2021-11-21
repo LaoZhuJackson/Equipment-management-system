@@ -10,14 +10,8 @@
     <link rel="stylesheet" href="./css/forget.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" />
     <script type="text/javascript">
-        function none_alert() {
-            alert("所有选项不能为空ヽ(`Д´)ﾉ");
-        }
-        function name_not_exist_alert() {
-            alert("用户名不存在┐(ﾟ～ﾟ)┌ ");
-        }
-        function phone_error() {
-            alert("电话号码错误(●—●)");
+        function alert_message(text) {
+            alert(text);
         }
         function password_message(password) {
             alert('你的密码是："' + password + '" ᕦ(･ㅂ･)ᕤ别再忘了哦~');

@@ -11,6 +11,7 @@ namespace EMS.Web
     public partial class forget : System.Web.UI.Page
     {
         VisiterService visiterService = new VisiterService();
+        String message = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -22,7 +23,8 @@ namespace EMS.Web
             {
                 if (!visiterService.IsNameExist(username_forget.Text.Trim()))//用户名不存在
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "not_exist", "<script type='text/javascript'>name_not_exist_alert();</script>");
+                    message = "用户名不存在┐(ﾟ～ﾟ)┌";
+                    ClientScript.RegisterStartupScript(this.GetType(), "not_exist", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                 }
                 else//用户名存在
                 {
@@ -33,13 +35,15 @@ namespace EMS.Web
                     }
                     else//电话号码不正确
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "phone_error_alert", "<script type='text/javascript'>phone_error();</script>");
+                        message = "电话号码错误(●—●)";
+                        ClientScript.RegisterStartupScript(this.GetType(), "phone_error_alert", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                     }
                 }
             }
             else
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "is_none", "<script type='text/javascript'>none_alert();</script>");
+                message = "所有选项不能为空ヽ(`Д´)ﾉ";
+                ClientScript.RegisterStartupScript(this.GetType(), "is_none", "<script type='text/javascript'>alert_message('" + message + "');</script>");
             }
         }
     }

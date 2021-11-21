@@ -22,7 +22,7 @@ namespace EMS.DAL
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="info_db")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="infoDB")]
 	public partial class infoDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -33,16 +33,16 @@ namespace EMS.DAL
     partial void Insertdept_info(dept_info instance);
     partial void Updatedept_info(dept_info instance);
     partial void Deletedept_info(dept_info instance);
-    partial void InsertEquip_Information(Equip_Information instance);
-    partial void UpdateEquip_Information(Equip_Information instance);
-    partial void DeleteEquip_Information(Equip_Information instance);
     partial void InsertEmployee_info(Employee_info instance);
     partial void UpdateEmployee_info(Employee_info instance);
     partial void DeleteEmployee_info(Employee_info instance);
+    partial void InsertEquip_Information(Equip_Information instance);
+    partial void UpdateEquip_Information(Equip_Information instance);
+    partial void DeleteEquip_Information(Equip_Information instance);
     #endregion
 		
 		public infoDBDataContext() : 
-				base(global::EMS.DAL.Properties.Settings.Default.info_dbConnectionString, mappingSource)
+				base(global::EMS.DAL.Properties.Settings.Default.infoDBConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -79,19 +79,19 @@ namespace EMS.DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<Equip_Information> Equip_Information
-		{
-			get
-			{
-				return this.GetTable<Equip_Information>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Employee_info> Employee_info
 		{
 			get
 			{
 				return this.GetTable<Employee_info>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Equip_Information> Equip_Information
+		{
+			get
+			{
+				return this.GetTable<Equip_Information>();
 			}
 		}
 	}
@@ -215,277 +215,6 @@ namespace EMS.DAL
 					if ((value != null))
 					{
 						value.dept_info.Add(this);
-						this._person_id = value.Id;
-					}
-					else
-					{
-						this._person_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Employee_info");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Equip_Information")]
-	public partial class Equip_Information : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _name;
-		
-		private string _specification;
-		
-		private System.Data.Linq.Binary _image;
-		
-		private System.Nullable<int> _price;
-		
-		private System.Nullable<System.DateTime> _date;
-		
-		private string _location;
-		
-		private System.Nullable<int> _person_id;
-		
-		private EntityRef<Employee_info> _Employee_info;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnspecificationChanging(string value);
-    partial void OnspecificationChanged();
-    partial void OnimageChanging(System.Data.Linq.Binary value);
-    partial void OnimageChanged();
-    partial void OnpriceChanging(System.Nullable<int> value);
-    partial void OnpriceChanged();
-    partial void OndateChanging(System.Nullable<System.DateTime> value);
-    partial void OndateChanged();
-    partial void OnlocationChanging(string value);
-    partial void OnlocationChanged();
-    partial void Onperson_idChanging(System.Nullable<int> value);
-    partial void Onperson_idChanged();
-    #endregion
-		
-		public Equip_Information()
-		{
-			this._Employee_info = default(EntityRef<Employee_info>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_specification", DbType="NVarChar(50)")]
-		public string specification
-		{
-			get
-			{
-				return this._specification;
-			}
-			set
-			{
-				if ((this._specification != value))
-				{
-					this.OnspecificationChanging(value);
-					this.SendPropertyChanging();
-					this._specification = value;
-					this.SendPropertyChanged("specification");
-					this.OnspecificationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary image
-		{
-			get
-			{
-				return this._image;
-			}
-			set
-			{
-				if ((this._image != value))
-				{
-					this.OnimageChanging(value);
-					this.SendPropertyChanging();
-					this._image = value;
-					this.SendPropertyChanged("image");
-					this.OnimageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int")]
-		public System.Nullable<int> price
-		{
-			get
-			{
-				return this._price;
-			}
-			set
-			{
-				if ((this._price != value))
-				{
-					this.OnpriceChanging(value);
-					this.SendPropertyChanging();
-					this._price = value;
-					this.SendPropertyChanged("price");
-					this.OnpriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="Date")]
-		public System.Nullable<System.DateTime> date
-		{
-			get
-			{
-				return this._date;
-			}
-			set
-			{
-				if ((this._date != value))
-				{
-					this.OndateChanging(value);
-					this.SendPropertyChanging();
-					this._date = value;
-					this.SendPropertyChanged("date");
-					this.OndateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location", DbType="NVarChar(50)")]
-		public string location
-		{
-			get
-			{
-				return this._location;
-			}
-			set
-			{
-				if ((this._location != value))
-				{
-					this.OnlocationChanging(value);
-					this.SendPropertyChanging();
-					this._location = value;
-					this.SendPropertyChanged("location");
-					this.OnlocationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_person_id", DbType="Int")]
-		public System.Nullable<int> person_id
-		{
-			get
-			{
-				return this._person_id;
-			}
-			set
-			{
-				if ((this._person_id != value))
-				{
-					if (this._Employee_info.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onperson_idChanging(value);
-					this.SendPropertyChanging();
-					this._person_id = value;
-					this.SendPropertyChanged("person_id");
-					this.Onperson_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_info_Equip_Information", Storage="_Employee_info", ThisKey="person_id", OtherKey="Id", IsForeignKey=true)]
-		public Employee_info Employee_info
-		{
-			get
-			{
-				return this._Employee_info.Entity;
-			}
-			set
-			{
-				Employee_info previousValue = this._Employee_info.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee_info.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee_info.Entity = null;
-						previousValue.Equip_Information.Remove(this);
-					}
-					this._Employee_info.Entity = value;
-					if ((value != null))
-					{
-						value.Equip_Information.Add(this);
 						this._person_id = value.Id;
 					}
 					else
@@ -753,6 +482,277 @@ namespace EMS.DAL
 		{
 			this.SendPropertyChanging();
 			entity.Employee_info = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Equip_Information")]
+	public partial class Equip_Information : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _name;
+		
+		private string _specification;
+		
+		private System.Nullable<int> _price;
+		
+		private System.Nullable<System.DateTime> _date;
+		
+		private string _location;
+		
+		private System.Nullable<int> _person_id;
+		
+		private string _images;
+		
+		private EntityRef<Employee_info> _Employee_info;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnspecificationChanging(string value);
+    partial void OnspecificationChanged();
+    partial void OnpriceChanging(System.Nullable<int> value);
+    partial void OnpriceChanged();
+    partial void OndateChanging(System.Nullable<System.DateTime> value);
+    partial void OndateChanged();
+    partial void OnlocationChanging(string value);
+    partial void OnlocationChanged();
+    partial void Onperson_idChanging(System.Nullable<int> value);
+    partial void Onperson_idChanged();
+    partial void OnimagesChanging(string value);
+    partial void OnimagesChanged();
+    #endregion
+		
+		public Equip_Information()
+		{
+			this._Employee_info = default(EntityRef<Employee_info>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_specification", DbType="NVarChar(50)")]
+		public string specification
+		{
+			get
+			{
+				return this._specification;
+			}
+			set
+			{
+				if ((this._specification != value))
+				{
+					this.OnspecificationChanging(value);
+					this.SendPropertyChanging();
+					this._specification = value;
+					this.SendPropertyChanged("specification");
+					this.OnspecificationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int")]
+		public System.Nullable<int> price
+		{
+			get
+			{
+				return this._price;
+			}
+			set
+			{
+				if ((this._price != value))
+				{
+					this.OnpriceChanging(value);
+					this.SendPropertyChanging();
+					this._price = value;
+					this.SendPropertyChanged("price");
+					this.OnpriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="Date")]
+		public System.Nullable<System.DateTime> date
+		{
+			get
+			{
+				return this._date;
+			}
+			set
+			{
+				if ((this._date != value))
+				{
+					this.OndateChanging(value);
+					this.SendPropertyChanging();
+					this._date = value;
+					this.SendPropertyChanged("date");
+					this.OndateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location", DbType="NVarChar(50)")]
+		public string location
+		{
+			get
+			{
+				return this._location;
+			}
+			set
+			{
+				if ((this._location != value))
+				{
+					this.OnlocationChanging(value);
+					this.SendPropertyChanging();
+					this._location = value;
+					this.SendPropertyChanged("location");
+					this.OnlocationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_person_id", DbType="Int")]
+		public System.Nullable<int> person_id
+		{
+			get
+			{
+				return this._person_id;
+			}
+			set
+			{
+				if ((this._person_id != value))
+				{
+					if (this._Employee_info.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onperson_idChanging(value);
+					this.SendPropertyChanging();
+					this._person_id = value;
+					this.SendPropertyChanged("person_id");
+					this.Onperson_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_images", DbType="NVarChar(80)")]
+		public string images
+		{
+			get
+			{
+				return this._images;
+			}
+			set
+			{
+				if ((this._images != value))
+				{
+					this.OnimagesChanging(value);
+					this.SendPropertyChanging();
+					this._images = value;
+					this.SendPropertyChanged("images");
+					this.OnimagesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_info_Equip_Information", Storage="_Employee_info", ThisKey="person_id", OtherKey="Id", IsForeignKey=true)]
+		public Employee_info Employee_info
+		{
+			get
+			{
+				return this._Employee_info.Entity;
+			}
+			set
+			{
+				Employee_info previousValue = this._Employee_info.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee_info.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee_info.Entity = null;
+						previousValue.Equip_Information.Remove(this);
+					}
+					this._Employee_info.Entity = value;
+					if ((value != null))
+					{
+						value.Equip_Information.Add(this);
+						this._person_id = value.Id;
+					}
+					else
+					{
+						this._person_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Employee_info");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

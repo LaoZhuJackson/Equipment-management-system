@@ -7,10 +7,12 @@ namespace EMS.Web
     public partial class login2 : System.Web.UI.Page
     {
         VisiterService visiterService = new VisiterService();
-
+        String message = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            //初始化清除Session内容
+            Session.Clear();
         }
 
         protected void sign_in_btn_Click(object sender, EventArgs e)
@@ -27,26 +29,31 @@ namespace EMS.Web
                     {
                         Session["AdminId"] = visiterId;
                         Session["AdminName"] = username_in.Text;
+                        //为第一次登录成功通知作准备
+                        Session["login_count_admin"] = "first";
                         Response.Redirect("~/admin/Default.aspx");//重导到管理员页面
                     }
                     else//一般用户登录
                     {
                         Session["VisiterId"] = visiterId;
                         Session["VisiterName"] = username_in.Text;
+                        Session["login_count_visiter"] = "first";
                         Response.Redirect("~/Default.aspx");//重导到普通用户页面
                     }
                 }
                 else//账号或密码错误
                 {
                     //通过注册脚本实现弹窗
-                    ClientScript.RegisterStartupScript(this.GetType(), "sign_in_alert", "<script type='text/javascript'>sign_in_alert();</script>");
+                    message = "账号或密码错误( ･´ω`･ )";
+                    ClientScript.RegisterStartupScript(this.GetType(), "sign_in_alert", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                     //置空
                     password_in.Text = "";
                 }
             }
             else//存在空值
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "is_none", "<script type='text/javascript'>none_alert();</script>");
+                message = "所有选项不能为空ヽ(`Д´)ﾉ";
+                ClientScript.RegisterStartupScript(this.GetType(), "is_none", "<script type='text/javascript'>alert_message('" + message + "');</script>");
             }
         }
 
@@ -58,7 +65,8 @@ namespace EMS.Web
                 {
                     if (visiterService.IsNameExist(username_up.Text.Trim()))//如果用户名存在
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "name_exist", "<script type='text/javascript'>name_exist_alert();</script>");
+                        message = "用户名已存在┐(ﾟ～ﾟ)┌";
+                        ClientScript.RegisterStartupScript(this.GetType(), "name_exist", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                         username_up.Text = "Username...";
                         //跳转到注册页面
                         ClientScript.RegisterStartupScript(this.GetType(), "sign_up", "<script type='text/javascript'>sign_up();</script>");
@@ -67,12 +75,14 @@ namespace EMS.Web
                     {
                         visiterService.Insert(username_up.Text.Trim(), password_up.Text.Trim(), phone_up.Text.Trim());
                         //提示信息
-                        ClientScript.RegisterStartupScript(this.GetType(), "sign_up_successful", "<script type='text/javascript'>successful_message();</script>");
+                        message = "注册成功(｡◕ˇ∀ˇ◕)";
+                        ClientScript.RegisterStartupScript(this.GetType(), "sign_up_successful", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                     }
                 }
                 else//两次密码不同
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "different_password", "<script type='text/javascript'>password_alert();</script>");
+                    message = "两次密码输入不相同(｡・`ω´･)";
+                    ClientScript.RegisterStartupScript(this.GetType(), "different_password", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                     confirm_password_up.Text = "";
                     //跳转到注册页面
                     ClientScript.RegisterStartupScript(this.GetType(), "sign_up", "<script type='text/javascript'>sign_up();</script>");
@@ -80,7 +90,8 @@ namespace EMS.Web
             }
             else//存在空值
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "is_none", "<script type='text/javascript'>none_alert();</script>");
+                message = "所有选项不能为空ヽ(`Д´)ﾉ";
+                ClientScript.RegisterStartupScript(this.GetType(), "is_none", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                 //跳转到注册页面
                 ClientScript.RegisterStartupScript(this.GetType(), "sign_up", "<script type='text/javascript'>sign_up();</script>");
             }

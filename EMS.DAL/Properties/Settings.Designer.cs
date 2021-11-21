@@ -33,5 +33,16 @@ namespace EMS.DAL.Properties {
                 return ((string)(this["info_dbConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\文档\\学习相关\\后端\\EMS201924112114" +
+            "\\EMS.Web\\App_Data\\infoDB.mdf;Integrated Security=True")]
+        public string infoDBConnectionString {
+            get {
+                return ((string)(this["infoDBConnectionString"]));
+            }
+        }
     }
 }
