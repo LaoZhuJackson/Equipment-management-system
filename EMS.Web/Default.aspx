@@ -125,7 +125,17 @@
                             <asp:LinkButton ID="search_btn" runat="server" CssClass="button" OnClick="search_Click"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
                         </div>
                         <div class="grid_background visible">
-                            <asp:GridView ID="result_grid" runat="server"></asp:GridView>
+                            <asp:GridView ID="result_grid" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+                                <AlternatingRowStyle BackColor="#CCCCCC" />
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                            </asp:GridView>
                             <asp:Button ID="ok" runat="server" Text="Close" CssClass="button" OnClick="ok_Click" />
                         </div>
                     </div>
@@ -140,7 +150,17 @@
                             <asp:LinkButton ID="LinkButton_dept" runat="server" CssClass="button" OnClick="search_Click_dept"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
                         </div>
                         <div class="grid_background visible">
-                            <asp:GridView ID="GridView_dept" runat="server"></asp:GridView>
+                            <asp:GridView ID="GridView_dept" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+                                <AlternatingRowStyle BackColor="#CCCCCC" />
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                            </asp:GridView>
                             <asp:Button ID="Button_dept" runat="server" Text="Close" CssClass="button" OnClick="ok_Click_dept" />
                         </div>
                     </div>
@@ -155,7 +175,17 @@
                             <asp:LinkButton ID="LinkButton_emp" runat="server" CssClass="button" OnClick="search_Click_emp"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
                         </div>
                         <div class="grid_background visible">
-                            <asp:GridView ID="GridView_emp" runat="server" OnRowCreated="GridView_emp_RowCreated"></asp:GridView>
+                            <asp:GridView ID="GridView_emp" runat="server" OnRowCreated="GridView_emp_RowCreated" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+                                <AlternatingRowStyle BackColor="#CCCCCC" />
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                            </asp:GridView>
                             <asp:Button ID="Button_emp" runat="server" Text="Close" CssClass="button" OnClick="ok_Click_emp" />
                         </div>
                     </div>

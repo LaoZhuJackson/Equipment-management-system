@@ -320,7 +320,7 @@
     }
 
     .home-section .home-content .text {
-        width: 110px;
+        width: 150px;
         font-size: 26px;
         font-weight: 600;
     }
@@ -346,6 +346,8 @@
         font-size: 15px;
         font-weight: 600;
         text-decoration: none;
+        /* 去掉点击时的外边框 */
+        outline: none;
     }
 
         .welcome .button:hover {
@@ -396,6 +398,7 @@
             height: 5vh;
             padding: 0 8px;
             margin: 10px;
+            outline: none;
         }
 
         /* 保存按钮 */
@@ -412,6 +415,8 @@
             font-weight: 600;
             text-transform: uppercase;
             margin-top: 3vh;
+            /* 去掉点击时的外边框 */
+            outline: none;
         }
 
             .home-section .change_pwd .change_background .button:hover {
@@ -435,6 +440,7 @@
     height: 100vh;
     /* background-color: #4e6e61; */
     flex-direction: column;
+    transition: all 0.5s ease;
 }
     /* 查询操作背景框 */
     .home-section .content .operation {
@@ -468,6 +474,7 @@
             width: 35vw;
             margin-right: 15px;
             font-size: 15px;
+            outline: none;
         }
         /* search按钮 */
         .home-section .content .operation .button {
@@ -482,6 +489,8 @@
             font-size: 15px;
             font-weight: 600;
             text-decoration: none;
+            /* 去掉点击时的外边框 */
+            outline: none;
         }
 
             .home-section .content .operation .button:hover {
@@ -494,7 +503,105 @@
                 /* 缩放为95% */
                 transform: scale(.95);
             }
-/* ----------------查询页面表格部分-------------------- */
+    /* ----------------查询页面表格部分-------------------- */
+    /* ------------------------管理员特有页面---------------------- */
+    .home-section .content .admin_result {
+        display: flex;
+        width: 70vw;
+        height: 65%;
+        margin-top: 5vh;
+        justify-content: space-between;
+        transition: all 0.6s ease;
+    }
+
+        .home-section .content .admin_result .admin {
+            display: flex;
+            flex-direction: column;
+            /* background-color: #11101d; */
+            width: 32%;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+            .home-section .content .admin_result .admin .change,
+            .home-section .content .admin_result .admin .delete {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                height: 45%;
+                align-items: center;
+                justify-content: flex-end;
+                background-color: #fff;
+                border-radius: 40px;
+                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+            }
+
+            .home-section .content .admin_result .admin .input_area {
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 100%;
+                /* background-color: #11101d; */
+            }
+
+                .home-section .content .admin_result .admin .input_area h3 {
+                    position: absolute;
+                    top: 0;
+                }
+
+                .home-section .content .admin_result .admin .input_area input {
+                    width: 20vw;
+                    margin: 2vh 0;
+                    padding: 3px 6px;
+                    border-radius: 10px;
+                    background-color: #f2f2f2;
+                    text-transform: capitalize;
+                    outline: none;
+                }
+
+            .home-section .content .admin_result .admin .change select {
+                width: 20vw;
+                padding: 6px 2px;
+                border-radius: 10px;
+                background-color: #f2f2f2;
+                outline: none;
+            }
+
+            .home-section .content .admin_result .admin .change .button,
+            .home-section .content .admin_result .admin .delete .button {
+                position: absolute;
+                border: 1px solid #6D9886;
+                background-color: #fff;
+                border-radius: 20px;
+                width: 14vw;
+                color: #6D9886;
+                text-align: center;
+                padding: 1px 0px;
+                transition: all 0.2s ease-in-out;
+                font-size: 15px;
+                font-weight: 600;
+                font-size: 15px;
+                font-weight: 600;
+                text-transform: capitalize;
+                margin: 3% 0;
+                /* 去掉点击时的外边框 */
+                outline: none;
+            }
+
+            .home-section .content .admin_result .admin .change button:hover,
+            .home-section .content .admin_result .admin .delete button:hover {
+                color: #f2f2f2;
+                background-color: #6D9886;
+                border: 1px solid #4e6e61;
+            }
+
+            .home-section .content .admin_result .admin .change button:active,
+            .home-section .content .admin_result .admin .delete button:active {
+                transform: scale(.95);
+            }
+/* ------------------------------------------------------------- */
 .home-section .grid_background {
     margin-top: 0px;
     margin-bottom: 50px;
@@ -502,7 +609,7 @@
     height: 0%;
     background-color: #fff;
     height: 100%;
-    width: 70vw;
+    width: 60%;
     border-radius: 40px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -529,16 +636,17 @@
         text-align: center;
         padding: 1px 0px;
         transition: all 0.2s ease;
+        /* 去掉点击时的外边框 */
+        outline: none;
     }
     /* 表格背景 */
     .home-section .grid_background.visible {
         opacity: 1;
         position: relative;
-        margin-top: 40px;
         margin-bottom: 40px;
         background-color: #fff;
         height: 100%;
-        width: 70vw;
+        width: 60%;
         border-radius: 40px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
         display: flex;
@@ -568,6 +676,8 @@
             font-size: 15px;
             font-weight: 600;
             margin-bottom: 2vh;
+            /* 去掉点击时的外边框 */
+            outline: none;
         }
 
             .home-section .grid_background.visible .button:hover {
@@ -579,4 +689,86 @@
             .home-section .grid_background.visible .button:active {
                 transform: scale(.95);
             }
+/* ----------------------------------------------------------------- */
+/* --------------------------添加页面------------------------------- */
+.home-section .add_content {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+    .home-section .add_content .add_area {
+        background-color: #fff;
+        height: 65vh;
+        width: 40vw;
+        padding: 0 5vw;
+        border-radius: 40px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.5s ease;
+    }
+
+    .home-section .add_content h2 {
+        margin-top: 2vh;
+    }
+
+    .home-section .add_content .button {
+        border: 1px solid #6D9886;
+        background-color: #fff;
+        border-radius: 20px;
+        width: 12vw;
+        color: #6D9886;
+        text-align: center;
+        padding: 1px 0px;
+        transition: all 0.2s ease-in-out;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: capitalize;
+        margin-bottom: 1vh;
+        /* 去掉点击时的外边框 */
+        outline: none;
+    }
+
+        .home-section .add_content .button:hover {
+            color: #f2f2f2;
+            background-color: #6D9886;
+            border: 1px solid #4e6e61;
+        }
+
+        .home-section .add_content .button:active {
+            transform: scale(.95);
+        }
+
+    .home-section .add_content .input_add {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .home-section .add_content .input_add select {
+            width: 100%;
+            padding: 6px 2px;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+        }
+
+        .home-section .add_content .input_add input {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            background-color: #ddd;
+            height: 5vh;
+            padding: 0 8px;
+            margin: 5px;
+            text-transform: capitalize;
+            outline: none;
+        }
+
 /* ----------------------------------------------------------------- */
