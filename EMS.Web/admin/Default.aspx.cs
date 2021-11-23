@@ -16,23 +16,23 @@ namespace EMS.Web.admin
         //进行登录验证
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["AdminId"] != null || Session["AdminName"] != null)//用户已登录
-            //{
-            //    //初始化页面
-            //    if (Session["login_count_admin"].ToString() == "first")//如果是第一次登录
-            //    {
-            //        Session["login_count_admin"] = "not_first";
-            //        message = "登录成功(ﾉﾟ▽ﾟ)ﾉ";
-            //        ClientScript.RegisterStartupScript(this.GetType(), "login_success", "<script type='text/javascript'>alert_message('" + message + "');</script>");
-            //    }
-            //    welcome_label.Text = Session["AdminName"] + "管理员，欢迎你";
-            //    login.Visible = false;
-            //}
-            //else//用户未登录
-            //{
-            //    ClientScript.RegisterStartupScript(this.GetType(), "login_message", "<script type='text/javascript'>please_login();</script>");
-            //    login.Visible = true;
-            //}
+            if (Session["AdminId"] != null || Session["AdminName"] != null)//用户已登录
+            {
+                //初始化页面
+                if (Session["login_count_admin"].ToString() == "first")//如果是第一次登录
+                {
+                    Session["login_count_admin"] = "not_first";
+                    message = "登录成功(ﾉﾟ▽ﾟ)ﾉ";
+                    ClientScript.RegisterStartupScript(this.GetType(), "login_success", "<script type='text/javascript'>alert_message('" + message + "');</script>");
+                }
+                welcome_label.Text = Session["AdminName"] + "管理员，欢迎你";
+                login.Visible = false;
+            }
+            else//用户未登录
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "login_message", "<script type='text/javascript'>please_login();</script>");
+                login.Visible = true;
+            }
         }
         /// <summary>
         /// 进行页面定位
@@ -290,6 +290,8 @@ namespace EMS.Web.admin
                     int id = Convert.ToInt32(equip_person_id_text.Text.Trim());
                     //调用方法
                     method.Insert(equip_name_text.Text.Trim(), equip_spec_text.Text.Trim(), price, date, equip_location_text.Text.Trim(), id, equip_image_text.Text.Trim());
+                    message = "添加成功(◕ᴗ◕✿)";
+                    ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                 }
                 else//数字格式错误
                 {
@@ -312,7 +314,16 @@ namespace EMS.Web.admin
             {
                 if (method.isNum(dept_person_id_text.Text.Trim()))//数字格式正确
                 {
-                    method.Insert(dept_name_text.Text.Trim(), Convert.ToInt32(dept_person_id_text.Text.Trim()));
+                    if(method.Insert(dept_name_text.Text.Trim(), Convert.ToInt32(dept_person_id_text.Text.Trim())))
+                    {
+                        message = "添加成功(◕ᴗ◕✿)";
+                        ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
+                    }
+                    else//不存在负责人id
+                    {
+                        message = "负责人编号不存在∑(ﾟДﾟノ)ノ";
+                        ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
+                    }
                 }
                 else
                 {
@@ -346,6 +357,8 @@ namespace EMS.Web.admin
                             method.Insert(emp_name_text.Text.Trim(), emp_password_text.Text.Trim(), emp_phone_text.Text.Trim(), is_admin, emp_dept_text.Text.Trim());
                             break;
                     }
+                    message = "添加成功(◕ᴗ◕✿)";
+                    ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                 }
                 else
                 {

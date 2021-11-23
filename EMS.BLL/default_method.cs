@@ -188,17 +188,25 @@ namespace EMS.BLL
             db.SubmitChanges();
         }
         //管理员添加部门
-        public void Insert(string name, int person_id)
+        public bool Insert(string name, int person_id)
         {
             int last_Id = db.dept_info.AsEnumerable().Last().Id;
-            dept_info dept = new dept_info
+            try
             {
-                Id = last_Id + 1,
-                name = name,
-                person_id = person_id
-            };
-            db.dept_info.InsertOnSubmit(dept);
-            db.SubmitChanges();
+                dept_info dept = new dept_info
+                {
+                    Id = last_Id + 1,
+                    name = name,
+                    person_id = person_id
+                };
+                db.dept_info.InsertOnSubmit(dept);
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         //管理员添加员工
         public void Insert(string name, string password, string phone, bool is_admin, string dept)
