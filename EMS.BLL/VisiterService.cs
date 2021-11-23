@@ -46,28 +46,7 @@ namespace EMS.BLL
             else
                 return false;
         }
-        /// <summary>
-        /// 插入数据
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="password"></param>
-        /// <param name="phone"></param>
-        /// <param name="is_admin"></param>
-        /// <param name="dept"></param>
-        public void Insert(string name, string password, string phone)
-        {
-            //选出employee_info表中的最后一条数据的id
-            int last_Id = db.Employee_info.AsEnumerable().Last().Id;
-            Employee_info employee = new Employee_info
-            {
-                Id = last_Id + 1,
-                name = name,
-                password = password,
-                phone = phone,
-            };
-            db.Employee_info.InsertOnSubmit(employee);
-            db.SubmitChanges();
-        }
+        
         /// <summary>
         /// 判断是否为管理员
         /// </summary>

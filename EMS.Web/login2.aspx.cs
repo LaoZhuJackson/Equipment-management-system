@@ -7,6 +7,7 @@ namespace EMS.Web
     public partial class login2 : System.Web.UI.Page
     {
         VisiterService visiterService = new VisiterService();
+        default_method method = new default_method();
         String message = "";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -73,7 +74,7 @@ namespace EMS.Web
                     }
                     else//全部正确，向数据库插入信息
                     {
-                        visiterService.Insert(username_up.Text.Trim(), password_up.Text.Trim(), phone_up.Text.Trim());
+                        method.Insert(username_up.Text.Trim(), password_up.Text.Trim(), phone_up.Text.Trim());
                         //提示信息
                         message = "注册成功(｡◕ˇ∀ˇ◕)";
                         ClientScript.RegisterStartupScript(this.GetType(), "sign_up_successful", "<script type='text/javascript'>alert_message('" + message + "');</script>");

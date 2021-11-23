@@ -142,10 +142,11 @@
                             <asp:DropDownList ID="select_drop_down_list" runat="server" CssClass="drop_down_list">
                                 <asp:ListItem Selected="True" Value="1">设备编号</asp:ListItem>
                                 <asp:ListItem Value="2">设备名称</asp:ListItem>
-                                <asp:ListItem Value="3">购入日期</asp:ListItem>
-                                <asp:ListItem Value="4">存放位置</asp:ListItem>
-                                <asp:ListItem Value="5">负责人名称</asp:ListItem>
-                                <asp:ListItem Value="6">部门名称</asp:ListItem>
+                                <asp:ListItem Value="3">设备规格</asp:ListItem>
+                                <asp:ListItem Value="4">购入日期</asp:ListItem>
+                                <asp:ListItem Value="5">存放位置</asp:ListItem>
+                                <asp:ListItem Value="6">负责人编号</asp:ListItem>
+                                <%--<asp:ListItem Value="7">部门名称</asp:ListItem>--%>
                             </asp:DropDownList>
                             <asp:TextBox ID="data_text" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="search_btn" runat="server" CssClass="button" OnClick="search_Click"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
@@ -169,25 +170,26 @@
                                 <div class="change">
                                     <div class="input_area">
                                         <h3>修改数据</h3>
-                                        <input type="text" placeholder="select id" />
+                                        <asp:TextBox ID="change_data_id_equip" runat="server" placeholder="select id"></asp:TextBox>
                                         <asp:DropDownList ID="select_item_dropdownlist_equip" runat="server">
-                                            <asp:ListItem Selected="True" Value="1">设备编号</asp:ListItem>
-                                            <asp:ListItem Value="2">设备名称</asp:ListItem>
-                                            <asp:ListItem Value="3">购入日期</asp:ListItem>
-                                            <asp:ListItem Value="4">存放位置</asp:ListItem>
-                                            <asp:ListItem Value="5">负责人名称</asp:ListItem>
-                                            <asp:ListItem Value="6">部门名称</asp:ListItem>
+                                            <asp:ListItem Selected="True" Value="1">设备名称</asp:ListItem>
+                                            <asp:ListItem Value="2">设备规格</asp:ListItem>
+                                            <asp:ListItem Value="3">购入价格</asp:ListItem>
+                                            <asp:ListItem Value="4">购入日期</asp:ListItem>
+                                            <asp:ListItem Value="5">存放位置</asp:ListItem>
+                                            <asp:ListItem Value="6">负责人编号</asp:ListItem>
+                                            <asp:ListItem Value="7">图片路径</asp:ListItem>
                                         </asp:DropDownList>
-                                        <input type="text" placeholder="Modified value" />
+                                        <asp:TextBox ID="data_change_text_equip" runat="server" placeholder="Modified value"></asp:TextBox>
                                     </div>
-                                    <asp:Button ID="change_equip_btn" runat="server" Text="change" CssClass="button" />
+                                    <asp:Button ID="change_equip_btn" runat="server" Text="change" CssClass="button" OnClick="change_equip_btn_click" />
                                 </div>
                                 <div class="delete">
                                     <div class="input_area">
                                         <h3>删除数据</h3>
-                                        <input type="text" placeholder="select id" />
+                                        <asp:TextBox ID="delete_id_text_equip" runat="server" placeholder="select id"></asp:TextBox>
                                     </div>
-                                    <asp:Button ID="delete_equip_btn" runat="server" Text="delete" CssClass="button" />
+                                    <asp:Button ID="delete_equip_btn" runat="server" Text="delete" CssClass="button" OnClick="delete_equip_btn_click" />
                                 </div>
                             </div>
                         </div>
@@ -221,22 +223,21 @@
                                 <div class="change">
                                     <div class="input_area">
                                         <h3>修改数据</h3>
-                                        <input type="text" placeholder="select id" />
+                                        <asp:TextBox ID="change_data_id_dept" runat="server" placeholder="select id"></asp:TextBox>
                                         <asp:DropDownList ID="select_item_dropdownlist_dept" runat="server">
-                                            <asp:ListItem Selected="True" Value="1">部门编号</asp:ListItem>
-                                            <asp:ListItem Value="2">部门名称</asp:ListItem>
-                                            <asp:ListItem Value="3">负责人编号</asp:ListItem>
+                                            <asp:ListItem Selected="True" Value="1">部门名称</asp:ListItem>
+                                            <asp:ListItem Value="2">负责人编号</asp:ListItem>
                                         </asp:DropDownList>
-                                        <input type="text" placeholder="Modified value" />
+                                        <asp:TextBox ID="data_change_text_dept" runat="server" placeholder="Modified value"></asp:TextBox>
                                     </div>
-                                    <asp:Button ID="change_dept_btn" runat="server" Text="change" CssClass="button" />
+                                    <asp:Button ID="change_dept_btn" runat="server" Text="change" CssClass="button" OnClick="change_dept_btn_click" />
                                 </div>
                                 <div class="delete">
                                     <div class="input_area">
                                         <h3>删除数据</h3>
-                                        <input type="text" placeholder="select id" />
+                                        <asp:TextBox ID="delete_id_text_dept" runat="server" placeholder="select id"></asp:TextBox>
                                     </div>
-                                    <asp:Button ID="delete_dept_btn" runat="server" Text="delete" CssClass="button" />
+                                    <asp:Button ID="delete_dept_btn" runat="server" Text="delete" CssClass="button" OnClick="delete_dept_btn_click" />
                                 </div>
                             </div>
                         </div>
@@ -253,7 +254,7 @@
                         </div>
                         <div class="admin_result">
                             <div class="grid_background visible">
-                                <asp:GridView ID="GridView_emp" runat="server" OnRowCreated="GridView_emp_RowCreated" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+                                <asp:GridView ID="GridView_emp" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
                                     <AlternatingRowStyle BackColor="#CCCCCC" />
                                     <FooterStyle BackColor="#CCCCCC" />
                                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -270,22 +271,24 @@
                                 <div class="change">
                                     <div class="input_area">
                                         <h3>修改数据</h3>
-                                        <input type="text" placeholder="select id" />
+                                        <asp:TextBox ID="change_data_id_emp" runat="server" placeholder="select id"></asp:TextBox>
                                         <asp:DropDownList ID="select_item_dropdownlist_emp" runat="server">
-                                            <asp:ListItem Selected="True" Value="1">人员编号</asp:ListItem>
-                                            <asp:ListItem Value="2">姓名</asp:ListItem>
-                                            <asp:ListItem Value="3">部门名称</asp:ListItem>
+                                            <asp:ListItem Selected="True" Value="1">姓名</asp:ListItem>
+                                            <asp:ListItem Value="2">密码</asp:ListItem>
+                                            <asp:ListItem Value="3">电话</asp:ListItem>
+                                            <asp:ListItem Value="4">管理员权限</asp:ListItem>
+                                            <asp:ListItem Value="5">部门名称</asp:ListItem>
                                         </asp:DropDownList>
-                                        <input type="text" placeholder="Modified value" />
+                                        <asp:TextBox ID="data_change_text_emp" runat="server" placeholder="Modified value"></asp:TextBox>
                                     </div>
-                                    <asp:Button ID="change_emp_btn" runat="server" Text="change" CssClass="button" />
+                                    <asp:Button ID="change_emp_btn" runat="server" Text="change" CssClass="button" OnClick="change_emp_btn_click" />
                                 </div>
                                 <div class="delete">
                                     <div class="input_area">
                                         <h3>删除数据</h3>
-                                        <input type="text" placeholder="select id" />
+                                        <asp:TextBox ID="delete_id_text_emp" runat="server" placeholder="select id"></asp:TextBox>
                                     </div>
-                                    <asp:Button ID="delete_emp_btn" runat="server" Text="delete" CssClass="button" />
+                                    <asp:Button ID="delete_emp_btn" runat="server" Text="delete" CssClass="button" OnClick="delete_emp_btn_click" />
                                 </div>
                             </div>
                         </div>
@@ -303,44 +306,41 @@
                         <div class="add_area">
                             <h2>添加设备</h2>
                             <div class="input_add">
-                                <input type="text" placeholder="id" />
-                                <input type="text" placeholder="name" />
-                                <input type="text" placeholder="specification" />
-                                <input type="text" placeholder="price" />
-                                <input type="text" placeholder="date" />
-                                <input type="text" placeholder="location" />
-                                <input type="text" placeholder="person id" />
-                                <input type="text" placeholder="image link" />
+                                <asp:TextBox ID="equip_name_text" runat="server" placeholder="name"></asp:TextBox>
+                                <asp:TextBox ID="equip_spec_text" runat="server" placeholder="specification"></asp:TextBox>
+                                <asp:TextBox ID="equip_price_text" runat="server" placeholder="price"></asp:TextBox>
+                                <asp:TextBox ID="equip_date_text" runat="server" placeholder="date"></asp:TextBox>
+                                <asp:TextBox ID="equip_location_text" runat="server" placeholder="location"></asp:TextBox>
+                                <asp:TextBox ID="equip_person_id_text" runat="server" placeholder="person id"></asp:TextBox>
+                                <asp:TextBox ID="equip_image_text" runat="server" placeholder="image link"></asp:TextBox>
                             </div>
-                            <asp:Button ID="add_equip_btn" runat="server" Text="submit" CssClass="button" />
+                            <asp:Button ID="add_equip_btn" runat="server" Text="submit" CssClass="button" OnClick="add_equip_btn_click" />
                         </div>
                     </div>
                     <div class="add_content" id="add_dept_link_select" style="display: none;">
                         <div class="add_area">
                             <h2>添加部门</h2>
                             <div class="input_add">
-                                <input type="text" placeholder="id" />
-                                <input type="text" placeholder="name" />
-                                <input type="text" placeholder="person id" />
+                                <asp:TextBox ID="dept_name_text" runat="server" placeholder="name"></asp:TextBox>
+                                <asp:TextBox ID="dept_person_id_text" runat="server" placeholder="person id"></asp:TextBox>
                             </div>
-                            <asp:Button ID="add_dept_btn" runat="server" Text="submit" CssClass="button" />
+                            <asp:Button ID="add_dept_btn" runat="server" Text="submit" CssClass="button" OnClick="add_dept_btn_click" />
                         </div>
                     </div>
                     <div class="add_content" id="add_emp_link_select" style="display: none;">
                         <div class="add_area">
                             <h2>添加人员</h2>
                             <div class="input_add">
-                                <input type="text" placeholder="id" />
-                                <input type="text" placeholder="name" />
-                                <input type="text" placeholder="password" />
-                                <input type="text" placeholder="phone" />
-                                <asp:DropDownList ID="is_admin" runat="server" CssClass="drop_down_list">
+                                <asp:TextBox ID="emp_name_text" runat="server" placeholder="name"></asp:TextBox>
+                                <asp:TextBox ID="emp_password_text" runat="server" placeholder="password"></asp:TextBox>
+                                <asp:TextBox ID="emp_phone_text" runat="server" placeholder="phone" TextMode="Phone"></asp:TextBox>
+                                <asp:DropDownList ID="is_admin_emp_dropdownlist" runat="server" CssClass="drop_down_list">
                                     <asp:ListItem Value="1">是</asp:ListItem>
                                     <asp:ListItem Value="2">否</asp:ListItem>
                                 </asp:DropDownList>
-                                <input type="text" placeholder="department" />
+                                <asp:TextBox ID="emp_dept_text" runat="server" placeholder="department"></asp:TextBox>
                             </div>
-                            <asp:Button ID="add_emp_btn" runat="server" Text="submit" CssClass="button" />
+                            <asp:Button ID="add_emp_btn" runat="server" Text="submit" CssClass="button" OnClick="add_emp_btn_click" />
                         </div>
                     </div>
                 </div>
