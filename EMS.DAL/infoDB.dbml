@@ -1,11 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="infoDB" Class="infoDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\文档\学习相关\后端\EMS201924112114\EMS.Web\App_Data\infoDB.mdf;Integrated Security=True" SettingsObjectName="EMS.DAL.Properties.Settings" SettingsPropertyName="infoDBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-RU3ODDJ;Initial Catalog=infoDB;Persist Security Info=True;User ID=sa" SettingsObjectName="EMS.DAL.Properties.Settings" SettingsPropertyName="infoDBConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.dept_info" Member="dept_info">
     <Type Name="dept_info">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="person_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Employee_info_dept_info" Member="Employee_info" ThisKey="person_id" OtherKey="Id" Type="Employee_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Equip_Information" Member="Equip_Information">
+    <Type Name="Equip_Information">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="specification" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="location" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="person_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="picture_path" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Employee_info_Equip_Information" Member="Employee_info" ThisKey="person_id" OtherKey="Id" Type="Employee_info" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Employee_info" Member="Employee_info">
@@ -18,19 +31,6 @@
       <Column Name="dept" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Employee_info_dept_info" Member="dept_info" ThisKey="Id" OtherKey="person_id" Type="dept_info" />
       <Association Name="Employee_info_Equip_Information" Member="Equip_Information" ThisKey="Id" OtherKey="person_id" Type="Equip_Information" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Equip_Information" Member="Equip_Information">
-    <Type Name="Equip_Information">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="specification" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="location" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="person_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="images" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
-      <Association Name="Employee_info_Equip_Information" Member="Employee_info" ThisKey="person_id" OtherKey="Id" Type="Employee_info" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

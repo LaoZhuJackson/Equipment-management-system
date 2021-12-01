@@ -49,7 +49,7 @@ namespace EMS.Web.admin
         /// <param name="e"></param>
         protected void search_Click(object sender, EventArgs e)
         {
-            if (visiterService.is_none(data_text.Text.Trim()))//如果是空值
+            if (visiterService.is_none(data_text.Text.Trim()) && select_drop_down_list.SelectedValue != "8")//如果是空值
             {
                 message = "查到一只兰陵王┐(￣ー￣)┌";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -116,7 +116,16 @@ namespace EMS.Web.admin
                             ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                         }
                         break;
-                        //TODO
+                    //按设备负责人所在部门名称查询
+                    case "7":
+                        result_grid.DataSource = method.Search_ByDept(data_text.Text.Trim());
+                        result_grid.DataBind();
+                        break;
+                    //查询全部设备
+                    case "8":
+                        result_grid.DataSource = method.Search_all();
+                        result_grid.DataBind();
+                        break;
                 }
                 //显示表格
                 result_grid.Visible = true;
@@ -136,7 +145,7 @@ namespace EMS.Web.admin
         /// <param name="e"></param>
         protected void search_Click_dept(object sender, EventArgs e)
         {
-            if (visiterService.is_none(TextBox_dept.Text.Trim()))
+            if (visiterService.is_none(TextBox_dept.Text.Trim()) && DropDownList_dept.SelectedValue != "4")
             {
                 message = "查到一只兰陵王┐(￣ー￣)┌";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -170,6 +179,11 @@ namespace EMS.Web.admin
                         GridView_dept.DataSource = method.Search_ByPerson_dept(Convert.ToInt32(TextBox_dept.Text.Trim()));
                         GridView_dept.DataBind();
                         break;
+                    //查询全部部门
+                    case "4":
+                        GridView_dept.DataSource = method.Search_all_dept();
+                        GridView_dept.DataBind();
+                        break;
                 }
                 //显示表格
                 GridView_dept.Visible = true;
@@ -188,7 +202,7 @@ namespace EMS.Web.admin
         /// <param name="e"></param>
         protected void search_Click_emp(object sender, EventArgs e)
         {
-            if (visiterService.is_none(TextBox_emp.Text.Trim()))
+            if (visiterService.is_none(TextBox_emp.Text.Trim()) && DropDownList_emp.SelectedValue != "4")
             {
                 message = "查到一只兰陵王┐(￣ー￣)┌";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -220,6 +234,11 @@ namespace EMS.Web.admin
                     //部门名称
                     case "3":
                         GridView_emp.DataSource = method.Search_ByDept_emp(TextBox_emp.Text.Trim());
+                        GridView_emp.DataBind();
+                        break;
+                    //查询全部员工
+                    case "4":
+                        GridView_emp.DataSource = method.Search_all_emp();
                         GridView_emp.DataBind();
                         break;
                 }
@@ -275,7 +294,7 @@ namespace EMS.Web.admin
         }
         protected void add_equip_btn_click(object sender, EventArgs e)
         {
-            if (visiterService.is_none(equip_name_text.Text.Trim()) || visiterService.is_none(equip_spec_text.Text.Trim()) || visiterService.is_none(equip_price_text.Text.Trim()) || visiterService.is_none(equip_date_text.Text.Trim()) || visiterService.is_none(equip_location_text.Text.Trim()) || visiterService.is_none(equip_person_id_text.Text.Trim()) || visiterService.is_none(equip_image_text.Text.Trim()))
+            if (visiterService.is_none(equip_name_text.Text.Trim()) || visiterService.is_none(equip_spec_text.Text.Trim()) || visiterService.is_none(equip_price_text.Text.Trim()) || visiterService.is_none(equip_date_text.Text.Trim()) || visiterService.is_none(equip_location_text.Text.Trim()) || visiterService.is_none(equip_person_id_text.Text.Trim()) || visiterService.is_none(FileUpload1.FileName.Trim()))
             {
                 message = "请输入完整(¬_¬)";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -288,8 +307,15 @@ namespace EMS.Web.admin
                     int price = Convert.ToInt32(equip_price_text.Text.Trim());
                     DateTime date = Convert.ToDateTime(equip_date_text.Text.Trim());
                     int id = Convert.ToInt32(equip_person_id_text.Text.Trim());
+                    //设定图片上传路径
+                    string savePath = Server.MapPath("~/images/");
+                    savePath = savePath + "\\" + FileUpload1.FileName;
+                    //保存到服务器
+                    FileUpload1.PostedFile.SaveAs(savePath);
+                    //传入数据库保存的时候需要的是相对路径，所以需要更新savePath
+                    savePath = "/images/" + FileUpload1.FileName;
                     //调用方法
-                    method.Insert(equip_name_text.Text.Trim(), equip_spec_text.Text.Trim(), price, date, equip_location_text.Text.Trim(), id, equip_image_text.Text.Trim());
+                    method.Insert(equip_name_text.Text.Trim(), equip_spec_text.Text.Trim(), price, date, equip_location_text.Text.Trim(), id, savePath);
                     message = "添加成功(◕ᴗ◕✿)";
                     ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                 }
@@ -305,16 +331,16 @@ namespace EMS.Web.admin
 
         protected void add_dept_btn_click(object sender, EventArgs e)
         {
-            if (visiterService.is_none(dept_name_text.Text.Trim()) || visiterService.is_none(dept_person_id_text.Text.Trim()))
+            if (visiterService.is_none(dept_name_text.Text.Trim()))
             {
-                message = "请输入完整(¬_¬)";
+                message = "部门名称不能为空(¬_¬)";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
             }
             else
             {
-                if (method.isNum(dept_person_id_text.Text.Trim()))//数字格式正确
+                if (visiterService.is_none(dept_person_id_text.Text.Trim()))
                 {
-                    if(method.Insert(dept_name_text.Text.Trim(), Convert.ToInt32(dept_person_id_text.Text.Trim())))
+                    if (method.Insert(dept_name_text.Text.Trim()))
                     {
                         message = "添加成功(◕ᴗ◕✿)";
                         ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -325,10 +351,26 @@ namespace EMS.Web.admin
                         ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                     }
                 }
-                else
+                else//如果person_id不为空
                 {
-                    message = "请输入数字编号(╬￣皿￣)";
-                    ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
+                    if (method.isNum(dept_person_id_text.Text.Trim()))//数字格式正确
+                    {
+                        if (method.Insert(dept_name_text.Text.Trim(), Convert.ToInt32(dept_person_id_text.Text.Trim())))
+                        {
+                            message = "添加成功(◕ᴗ◕✿)";
+                            ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
+                        }
+                        else//不存在负责人id
+                        {
+                            message = "负责人编号不存在∑(ﾟДﾟノ)ノ";
+                            ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
+                        }
+                    }
+                    else
+                    {
+                        message = "请输入数字部门负责人编号(╬￣皿￣)";
+                        ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
+                    }
                 }
             }
             //页面定位
@@ -376,7 +418,7 @@ namespace EMS.Web.admin
         /// <param name="e"></param>
         protected void change_equip_btn_click(object sender, EventArgs e)
         {
-            if (visiterService.is_none(data_change_text_equip.Text.Trim()) || visiterService.is_none(change_data_id_equip.Text.Trim()))
+            if (visiterService.is_none(data_change_text_equip.Text.Trim()) || visiterService.is_none(change_data_id_equip.Text.Trim()) || visiterService.is_none(FileUpload2.FileName.Trim()))
             {
                 message = "请输入完整(¬_¬)";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -486,7 +528,16 @@ namespace EMS.Web.admin
                             }
                             break;
                         case "7":
-                            if (method.equip_change_image(id, data_change_text_equip.Text.Trim()))
+                            //隐藏文本框，显示选择键
+                            data_change_text_equip.Visible = false;
+                            FileUpload2.Visible = true;
+                            //将选择图片上传到服务器
+                            string savePath = Server.MapPath("~/images/");
+                            savePath = savePath + "\\" + FileUpload2.FileName;
+                            FileUpload2.SaveAs(savePath);
+                            savePath = "/images/" + FileUpload2.FileName;
+                            //修改数据库
+                            if (method.equip_change_image(id, savePath.Trim()))
                             {
                                 message = "修改成功(๑╹◡╹)ﾉ";
                                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -699,7 +750,7 @@ namespace EMS.Web.admin
                             break;
                         case "4":
                             bool is_admin = true;
-                            if(data_change_text_emp.Text.Trim()=="是"|| data_change_text_emp.Text.Trim() == "1"|| data_change_text_emp.Text.Trim() == "yes")
+                            if (data_change_text_emp.Text.Trim() == "是" || data_change_text_emp.Text.Trim() == "1" || data_change_text_emp.Text.Trim() == "yes")
                             {
                                 if (method.emp_change_is_admin(id, is_admin))
                                 {
@@ -711,7 +762,8 @@ namespace EMS.Web.admin
                                     message = "未查询到该编号数据╮(・o・)╭";
                                     ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                                 }
-                            }else if(data_change_text_emp.Text.Trim() == "否"|| data_change_text_emp.Text.Trim() == "0"|| data_change_text_emp.Text.Trim() == "no")
+                            }
+                            else if (data_change_text_emp.Text.Trim() == "否" || data_change_text_emp.Text.Trim() == "0" || data_change_text_emp.Text.Trim() == "no")
                             {
                                 is_admin = false;
                                 if (method.emp_change_is_admin(id, is_admin))

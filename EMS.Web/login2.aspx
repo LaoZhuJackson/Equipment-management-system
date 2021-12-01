@@ -32,11 +32,8 @@
                         <a href="#" class="social"><i class="bi bi-box-arrow-up-right"></i></a>
                     </div>
                     <asp:TextBox ID="username_up" runat="server" placeholder="Username..." CssClass="input"></asp:TextBox>
-                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="RequiredFieldValidator" Text="*" CssClass="validator" ControlToValidate="username_up">*</asp:RequiredFieldValidator>--%>
                     <asp:TextBox ID="phone_up" runat="server" TextMode="Phone" placeholder="Phone..." CssClass="input"></asp:TextBox>
-                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="RequiredFieldValidator" CssClass="validator" Text="*" ControlToValidate="phone_up">*</asp:RequiredFieldValidator>--%>
                     <asp:TextBox ID="password_up" runat="server" placeholder="Password..." CssClass="input" TextMode="Password"></asp:TextBox>
-                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="password_up" CssClass="validator">*</asp:RequiredFieldValidator>--%>
                     <asp:TextBox ID="confirm_password_up" runat="server" placeholder="Confirm Password..." CssClass="input" TextMode="Password"></asp:TextBox>
                     <asp:Button ID="sign_up_btn" runat="server" Text="Sign Up" CssClass="button" OnClick="sign_up_btn_Click" />
                 </div>
@@ -51,9 +48,7 @@
                         <a href="#" class="social"><i class="bi bi-box-arrow-up-right"></i></a>
                     </div>
                     <asp:TextBox ID="username_in" runat="server" placeholder="Username..." CssClass="input"></asp:TextBox>
-                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="username_in" CssClass="validator">*</asp:RequiredFieldValidator>--%>
                     <asp:TextBox ID="password_in" runat="server" placeholder="Password..." CssClass="input" TextMode="Password"></asp:TextBox>
-                    <%--                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="password_in" CssClass="validator" ForeColor="White">*</asp:RequiredFieldValidator>--%>
                     <a href="forget.aspx" class="forget">forget your password</a>
                     <asp:Button ID="sign_in_btn" runat="server" Text="Sign In" CssClass="button" OnClick="sign_in_btn_Click" />
                 </div>

@@ -79,7 +79,16 @@
     <Content Include="Default.aspx" />
     <Content Include="forget.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\calculater.gif" />
+    <Content Include="images\cleaner.gif" />
+    <Content Include="images\Coffee_machine.gif" />
+    <Content Include="images\computer1.gif" />
+    <Content Include="images\computer2.gif" />
     <Content Include="images\laozhu.gif" />
+    <Content Include="images\phone.gif" />
+    <Content Include="images\refrigerator.gif" />
+    <Content Include="images\router.gif" />
+    <Content Include="images\water_drink.gif" />
     <Content Include="js\default.js" />
     <Content Include="js\login.js" />
     <Content Include="login.aspx" />
@@ -129,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

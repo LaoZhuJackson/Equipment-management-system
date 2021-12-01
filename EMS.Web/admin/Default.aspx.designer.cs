@@ -123,6 +123,15 @@ namespace EMS.Web.admin
         protected global::System.Web.UI.WebControls.TextBox data_change_text_equip;
 
         /// <summary>
+        /// FileUpload2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
+
+        /// <summary>
         /// change_equip_btn 控件。
         /// </summary>
         /// <remarks>
@@ -438,13 +447,13 @@ namespace EMS.Web.admin
         protected global::System.Web.UI.WebControls.TextBox equip_person_id_text;
 
         /// <summary>
-        /// equip_image_text 控件。
+        /// FileUpload1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox equip_image_text;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
 
         /// <summary>
         /// add_equip_btn 控件。

@@ -62,6 +62,20 @@ namespace EMS.BLL
                     where r.person_id == id
                     select r).ToList();
         }
+        //按设备负责人所在部门名称查询(嵌套查询)
+        public List<Equip_Information> Search_ByDept(String dept)
+        {
+            return (from r in db.Equip_Information
+                    join r2 in db.Employee_info on r.person_id equals r2.Id//加入另一个id相同的表
+                    where SqlMethods.Like(r2.dept,dept+"%")
+                    //where r.person_id==db.Employee_info.First(p=>p.dept==dept).Id 该方法不知是否可以模糊查询
+                    select r).ToList();
+        }
+        public List<Equip_Information> Search_all()
+        {
+            return (from r in db.Equip_Information
+                    select r).ToList();
+        }
         /// <summary>
         /// 部门查询-------------------------------------------------------------
         /// </summary>
@@ -86,6 +100,11 @@ namespace EMS.BLL
                     where r.person_id == id
                     select r).ToList();
         }
+        public List<dept_info> Search_all_dept()
+        {
+            return (from r in db.dept_info
+                    select r).ToList();
+        }
         /// <summary>
         /// 人员查询---------------------------------------------------------
         /// </summary>
@@ -108,6 +127,11 @@ namespace EMS.BLL
         {
             return (from r in db.Employee_info
                     where SqlMethods.Like(r.dept, dept_name + "%")
+                    select r).ToList();
+        }
+        public List<Employee_info> Search_all_emp()
+        {
+            return (from r in db.Employee_info
                     select r).ToList();
         }
         /// <summary>
@@ -208,6 +232,25 @@ namespace EMS.BLL
                 return false;
             }
         }
+        public bool Insert(string name)//没有部门负责人的情况
+        {
+            int last_Id = db.dept_info.AsEnumerable().Last().Id;
+            try
+            {
+                dept_info dept = new dept_info
+                {
+                    Id = last_Id + 1,
+                    name = name,
+                };
+                db.dept_info.InsertOnSubmit(dept);
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         //管理员添加员工
         public void Insert(string name, string password, string phone, bool is_admin, string dept)
         {
@@ -225,7 +268,7 @@ namespace EMS.BLL
             db.SubmitChanges();
         }
         //管理员添加设备
-        public void Insert(string name, string spec, int price, DateTime date, string location, int person_id, string image)
+        public void Insert(string name, string spec, int price, DateTime date, string location, int person_id, string image_path)
         {
             int last_Id = db.Equip_Information.AsEnumerable().Last().id;
             Equip_Information equip = new Equip_Information
@@ -237,7 +280,7 @@ namespace EMS.BLL
                 date = date,
                 location = location,
                 person_id = person_id,
-                images = image
+                picture_path = image_path
             };
             db.Equip_Information.InsertOnSubmit(equip);
             db.SubmitChanges();
@@ -344,7 +387,7 @@ namespace EMS.BLL
                 return true;
             }
         }
-        public bool equip_change_image(int id, string image)//修改设备图片路径
+        public bool equip_change_image(int id, string image_path)//修改设备图片路径
         {
             Equip_Information row = (from r in db.Equip_Information
                                      where r.id == id
@@ -355,7 +398,7 @@ namespace EMS.BLL
             }
             else//修改成功
             {
-                row.images = image;
+                row.picture_path = image_path;
                 db.SubmitChanges();
                 return true;
             }
@@ -396,8 +439,8 @@ namespace EMS.BLL
         public bool emp_change_name(int id, string name)//修改人员姓名
         {
             Employee_info row = (from r in db.Employee_info
-                             where r.Id == id
-                             select r).FirstOrDefault();
+                                 where r.Id == id
+                                 select r).FirstOrDefault();
             if (row == null)//修改失败
             {
                 return false;
@@ -436,7 +479,7 @@ namespace EMS.BLL
             }
             else//修改成功
             {
-                row.phone=phone;
+                row.phone = phone;
                 db.SubmitChanges();
                 return true;
             }

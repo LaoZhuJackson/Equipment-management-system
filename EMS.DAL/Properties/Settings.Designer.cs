@@ -44,5 +44,16 @@ namespace EMS.DAL.Properties {
                 return ((string)(this["infoDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-RU3ODDJ;Initial Catalog=infoDB;Persist Security Info=True;Use" +
+            "r ID=sa;Password=123")]
+        public string infoDBConnectionString1 {
+            get {
+                return ((string)(this["infoDBConnectionString1"]));
+            }
+        }
     }
 }

@@ -657,38 +657,89 @@
         transition: all 0.6s ease;
     }
 
-        .home-section .grid_background.visible::-webkit-scrollbar {
-            display: none;
-        }
+.home-section .grid_background_default.visible {
+    opacity: 1;
+    position: relative;
+    margin-top: 5vh;
+    margin-bottom: 40px;
+    background-color: #fff;
+    height: 100%;
+    width: 70vw;
+    border-radius: 40px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: scroll;
+    transition: all 0.6s ease;
+}
 
-        .home-section .grid_background.visible .button {
-            opacity: 1;
-            border: 1px solid #6D9886;
-            background-color: #fff;
-            border-radius: 20px;
-            width: 14vw;
-            color: #6D9886;
-            text-align: center;
-            padding: 1px 0px;
-            transition: all 0.2s ease-in-out;
-            font-size: 15px;
-            font-weight: 600;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 2vh;
-            /* 去掉点击时的外边框 */
-            outline: none;
-        }
+    .home-section .grid_background_default.visible::-webkit-scrollbar {
+        display: none;
+    }
 
-            .home-section .grid_background.visible .button:hover {
-                color: #f2f2f2;
-                background-color: #6D9886;
-                border: 1px solid #4e6e61;
-            }
+.home-section .grid_background.visible::-webkit-scrollbar {
+    display: none;
+}
 
-            .home-section .grid_background.visible .button:active {
-                transform: scale(.95);
-            }
+.home-section .grid_background.visible .button {
+    opacity: 1;
+    border: 1px solid #6D9886;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 14vw;
+    color: #6D9886;
+    text-align: center;
+    padding: 1px 0px;
+    transition: all 0.2s ease-in-out;
+    font-size: 15px;
+    font-weight: 600;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 2vh;
+    /* 去掉点击时的外边框 */
+    outline: none;
+}
+
+.home-section .grid_background_default.visible .button {
+    opacity: 1;
+    border: 1px solid #6D9886;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 14vw;
+    color: #6D9886;
+    text-align: center;
+    padding: 1px 0px;
+    transition: all 0.2s ease-in-out;
+    font-size: 15px;
+    font-weight: 600;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 2vh;
+    /* 去掉点击时的外边框 */
+    outline: none;
+}
+
+.home-section .grid_background.visible .button:hover {
+    color: #f2f2f2;
+    background-color: #6D9886;
+    border: 1px solid #4e6e61;
+}
+
+.home-section .grid_background_default.visible .button:hover {
+    color: #f2f2f2;
+    background-color: #6D9886;
+    border: 1px solid #4e6e61;
+}
+
+.home-section .grid_background.visible .button:active {
+    transform: scale(.95);
+}
+
+.home-section .grid_background_default.visible .button:active {
+    transform: scale(.95);
+}
 /* ----------------------------------------------------------------- */
 /* --------------------------添加页面------------------------------- */
 .home-section .add_content {

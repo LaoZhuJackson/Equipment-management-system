@@ -124,9 +124,13 @@
                             <asp:TextBox ID="data_text" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="search_btn" runat="server" CssClass="button" OnClick="search_Click"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
                         </div>
-                        <div class="grid_background visible">
+                        <div class="grid_background_default visible">
                             <asp:GridView ID="result_grid" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
                                 <AlternatingRowStyle BackColor="#CCCCCC" />
+                                <Columns>
+                                    <asp:ImageField DataImageUrlField="picture_path" HeaderText="images">
+                                    </asp:ImageField>
+                                </Columns>
                                 <FooterStyle BackColor="#CCCCCC" />
                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                                 <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
@@ -149,7 +153,7 @@
                             <asp:TextBox ID="TextBox_dept" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="LinkButton_dept" runat="server" CssClass="button" OnClick="search_Click_dept"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
                         </div>
-                        <div class="grid_background visible">
+                        <div class="grid_background_default visible">
                             <asp:GridView ID="GridView_dept" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
                                 <AlternatingRowStyle BackColor="#CCCCCC" />
                                 <FooterStyle BackColor="#CCCCCC" />
@@ -174,7 +178,7 @@
                             <asp:TextBox ID="TextBox_emp" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="LinkButton_emp" runat="server" CssClass="button" OnClick="search_Click_emp"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
                         </div>
-                        <div class="grid_background visible">
+                        <div class="grid_background_default visible">
                             <asp:GridView ID="GridView_emp" runat="server" OnRowCreated="GridView_emp_RowCreated" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
                                 <AlternatingRowStyle BackColor="#CCCCCC" />
                                 <FooterStyle BackColor="#CCCCCC" />

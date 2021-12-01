@@ -146,7 +146,8 @@
                                 <asp:ListItem Value="4">购入日期</asp:ListItem>
                                 <asp:ListItem Value="5">存放位置</asp:ListItem>
                                 <asp:ListItem Value="6">负责人编号</asp:ListItem>
-                                <%--<asp:ListItem Value="7">部门名称</asp:ListItem>--%>
+                                <asp:ListItem Value="7">部门名称</asp:ListItem>
+                                <asp:ListItem Value="8">全部设备</asp:ListItem>
                             </asp:DropDownList>
                             <asp:TextBox ID="data_text" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="search_btn" runat="server" CssClass="button" OnClick="search_Click"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
@@ -155,6 +156,10 @@
                             <div class="grid_background visible">
                                 <asp:GridView ID="result_grid" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
                                     <AlternatingRowStyle BackColor="#CCCCCC" />
+                                    <Columns>
+                                        <asp:ImageField DataImageUrlField="picture_path" HeaderText="images">
+                                        </asp:ImageField>
+                                    </Columns>
                                     <FooterStyle BackColor="#CCCCCC" />
                                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                                     <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
@@ -178,9 +183,10 @@
                                             <asp:ListItem Value="4">购入日期</asp:ListItem>
                                             <asp:ListItem Value="5">存放位置</asp:ListItem>
                                             <asp:ListItem Value="6">负责人编号</asp:ListItem>
-                                            <asp:ListItem Value="7">图片路径</asp:ListItem>
+                                            <asp:ListItem Value="7">图片</asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:TextBox ID="data_change_text_equip" runat="server" placeholder="Modified value"></asp:TextBox>
+                                        <asp:FileUpload ID="FileUpload2" runat="server" Visible="False" />
                                     </div>
                                     <asp:Button ID="change_equip_btn" runat="server" Text="change" CssClass="button" OnClick="change_equip_btn_click" />
                                 </div>
@@ -200,6 +206,7 @@
                                 <asp:ListItem Selected="True" Value="1">部门编号</asp:ListItem>
                                 <asp:ListItem Value="2">部门名称</asp:ListItem>
                                 <asp:ListItem Value="3">负责人编号</asp:ListItem>
+                                <asp:ListItem Value="4">全部部门</asp:ListItem>
                             </asp:DropDownList>
                             <asp:TextBox ID="TextBox_dept" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="LinkButton_dept" runat="server" CssClass="button" OnClick="search_Click_dept"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
@@ -248,6 +255,7 @@
                                 <asp:ListItem Selected="True" Value="1">人员编号</asp:ListItem>
                                 <asp:ListItem Value="2">姓名</asp:ListItem>
                                 <asp:ListItem Value="3">部门名称</asp:ListItem>
+                                <asp:ListItem Value="4">全部人员</asp:ListItem>
                             </asp:DropDownList>
                             <asp:TextBox ID="TextBox_emp" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="LinkButton_emp" runat="server" CssClass="button" OnClick="search_Click_emp"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
@@ -312,7 +320,7 @@
                                 <asp:TextBox ID="equip_date_text" runat="server" placeholder="date"></asp:TextBox>
                                 <asp:TextBox ID="equip_location_text" runat="server" placeholder="location"></asp:TextBox>
                                 <asp:TextBox ID="equip_person_id_text" runat="server" placeholder="person id"></asp:TextBox>
-                                <asp:TextBox ID="equip_image_text" runat="server" placeholder="image link"></asp:TextBox>
+                                <asp:FileUpload ID="FileUpload1" runat="server" />
                             </div>
                             <asp:Button ID="add_equip_btn" runat="server" Text="submit" CssClass="button" OnClick="add_equip_btn_click" />
                         </div>
