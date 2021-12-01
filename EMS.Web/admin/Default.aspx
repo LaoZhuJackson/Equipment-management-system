@@ -176,7 +176,7 @@
                                     <div class="input_area">
                                         <h3>修改数据</h3>
                                         <asp:TextBox ID="change_data_id_equip" runat="server" placeholder="select id"></asp:TextBox>
-                                        <asp:DropDownList ID="select_item_dropdownlist_equip" runat="server">
+                                        <asp:DropDownList ID="select_item_dropdownlist_equip" runat="server" OnSelectedIndexChanged="select_item_dropdownlist_equip_SelectedIndexChanged" AutoPostBack="True">
                                             <asp:ListItem Selected="True" Value="1">设备名称</asp:ListItem>
                                             <asp:ListItem Value="2">设备规格</asp:ListItem>
                                             <asp:ListItem Value="3">购入价格</asp:ListItem>

@@ -418,7 +418,7 @@ namespace EMS.Web.admin
         /// <param name="e"></param>
         protected void change_equip_btn_click(object sender, EventArgs e)
         {
-            if (visiterService.is_none(data_change_text_equip.Text.Trim()) || visiterService.is_none(change_data_id_equip.Text.Trim()) || visiterService.is_none(FileUpload2.FileName.Trim()))
+            if (((visiterService.is_none(data_change_text_equip.Text.Trim()) || visiterService.is_none(change_data_id_equip.Text.Trim()))&& select_item_dropdownlist_equip.SelectedValue != "7" )|| ((visiterService.is_none(change_data_id_equip.Text.Trim()) || visiterService.is_none(FileUpload2.FileName) )&&select_item_dropdownlist_equip.SelectedValue=="7"))
             {
                 message = "请输入完整(¬_¬)";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -528,9 +528,6 @@ namespace EMS.Web.admin
                             }
                             break;
                         case "7":
-                            //隐藏文本框，显示选择键
-                            data_change_text_equip.Visible = false;
-                            FileUpload2.Visible = true;
                             //将选择图片上传到服务器
                             string savePath = Server.MapPath("~/images/");
                             savePath = savePath + "\\" + FileUpload2.FileName;
@@ -836,6 +833,22 @@ namespace EMS.Web.admin
                 }
             }
             page_select("3");
+        }
+
+        protected void select_item_dropdownlist_equip_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (select_item_dropdownlist_equip.SelectedValue == "7")
+            {
+                //隐藏文本框，显示选择键
+                data_change_text_equip.Visible = false;
+                FileUpload2.Visible = true;
+            }
+            else
+            {
+                //隐藏选择键，显示文本框
+                data_change_text_equip.Visible = true;
+                FileUpload2.Visible = false;
+            }
         }
     }
 }
