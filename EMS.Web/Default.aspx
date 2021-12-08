@@ -76,12 +76,12 @@
                     </li>
                     <!-- 帮助列 -->
                     <li>
-                        <a href="./help/preview/help.html" id="help_link">
+                        <a href="./help/preview/help.html" id="help_link" target="_blank">
                             <i class="bi bi-question-square"></i>
                             <span class="link_name">Help</span>
                         </a>
                         <ul class="sub-menu blank">
-                            <li><a class="link_name" href="./help/preview/help.html">Help</a></li>
+                            <li><a class="link_name" href="./help/preview/help.html" target="_blank">Help</a></li>
                         </ul>
                     </li>
                     <!-- 退出列 -->
