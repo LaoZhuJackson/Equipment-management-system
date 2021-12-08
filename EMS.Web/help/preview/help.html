@@ -1,0 +1,153 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>帮助文档</title>
+    <link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+    <style>
+        pre {
+            counter-reset: line-numbering;
+            border: solid 1px #d9d9d9;
+            border-radius: 0;
+            background: #fff;
+            padding: 0;
+            line-height: 23px;
+            margin-bottom: 30px;
+            white-space: pre;
+            overflow-x: auto;
+            word-break: inherit;
+            word-wrap: inherit;
+        }
+
+            pre a::before {
+                content: counter(line-numbering);
+                counter-increment: line-numbering;
+                padding-right: 1em; /* space after numbers */
+                width: 25px;
+                text-align: right;
+                opacity: 0.7;
+                display: inline-block;
+                color: #aaa;
+                background: #eee;
+                margin-right: 16px;
+                padding: 2px 10px;
+                font-size: 13px;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            pre a:first-of-type::before {
+                padding-top: 10px;
+            }
+
+            pre a:last-of-type::before {
+                padding-bottom: 10px;
+            }
+
+            pre a:only-of-type::before {
+                padding: 10px;
+            }
+
+        .highlight {
+            background-color: #ffffcc
+        }
+        /* RIGHT */
+    </style>
+</head>
+<body>
+    <div>
+        <div style='width:25%;'>
+            <ul id="tree" class="ztree" style='width:100%'>
+            </ul>
+        </div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+            <article class='markdown-body'>
+                <h1 id="-">帮助文档</h1>
+                <h2 id="0-">0.目录</h2>
+                <ul>
+                    <li><a href="#login">1.登录和注册</a></li>
+                    <li><a href="#search">2.查询</a></li>
+                    <li><a href="#change">3.修改</a></li>
+                    <li><a href="#delete">4.删除（管理员特有）</a></li>
+                    <li><a href="#add">5.添加（管理员特有）</a></li>
+                    <li><a href="#pwd">6.修改密码</a></li>
+                </ul>
+                <hr>
+                <h2 id="-span-id-login-1-span-"><span id="login">1.登录和注册</span></h2>
+<pre><code>输入账号密码登录，管理员与普通人的账户添加在注册中实现，登录和注册不需要选择身份，
+在同一个登录框输入即可识别。
+</code></pre><blockquote>
+                    <p>存在空值判断，不能输入空值</p>
+                </blockquote>
+                <blockquote>
+                    <p>用户已存在会给出提示</p>
+                </blockquote>
+                <blockquote>
+                    <p>存在非法值判断</p>
+                </blockquote>
+                <h2 id="-span-id-search-2-span-"><span id="search">2.查询</span></h2>
+<pre><code>通过左侧侧边导航栏进入对应的查询页面。进入后通过选择下拉列表来选择需要按照
+那种方式然后点击search按钮进行查询
+</code></pre><blockquote>
+                    <p>存在空值判断，不能输入空值</p>
+                </blockquote>
+                <blockquote>
+                    <p>通过编号查询需要输入数字，否则非法</p>
+                </blockquote>
+                <h2 id="-span-id-change-3-span-"><span id="change">3.修改</span></h2>
+<pre><code>管理员特有功能，在查询出结果后，可以在右侧的修改区域中通过输入需要修改的编号，
+然后在下拉列表中选择需要修改的列名，最后输入修改对应的值，点击change按钮可以提交修改
+</code></pre><blockquote>
+                    <p>存在空值判断，不能输入空值</p>
+                </blockquote>
+                <blockquote>
+                    <p>实现了非法值检测，如果需要修改的内容是数字，就不能输入<code>除数字外</code>的其他内容</p>
+                </blockquote>
+                <h2 id="-span-id-delete-5-span-"><span id="delete">5.删除</span></h2>
+<pre><code>管理员特有功能，右下角的删除区域可以进行删除输入对应编号的数据
+</code></pre><blockquote>
+                    <p>存在空值判断，不能输入空值</p>
+                </blockquote>
+                <blockquote>
+                    <p>删除单条数据只需要输入一个id点击删除按钮即可</p>
+                </blockquote>
+                <h2 id="-span-id-add-5-span-"><span id="add">5.添加</span></h2>
+<pre><code>实现设备、部门、人员的添加。
+</code></pre><blockquote>
+                    <p>存在空值判断，不能输入空值</p>
+                </blockquote>
+                <blockquote>
+                    <p>存在非法值判断机制</p>
+                </blockquote>
+                <h2 id="-span-id-pwd-6-span-"><span id="pwd">6.修改密码</span></h2>
+<pre><code>通过验证旧密码，以及输入两遍新密码进行修改保存
+</code></pre><blockquote>
+                    <p>存在空值判断，不能输入空值</p>
+                </blockquote>
+
+            </article>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript">
+<!--
+    $(document).ready(function () {
+        var css_conf = eval(markdown_panel_style);
+        $('#readme').css(css_conf)
+
+        var conf = eval(jquery_ztree_toc_opts);
+        $('#tree').ztree_toc(conf);
+    });
+//-->
+</SCRIPT>

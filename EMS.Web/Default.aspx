@@ -74,6 +74,16 @@
                             <li><a class="link_name" href="#">Change Password</a></li>
                         </ul>
                     </li>
+                    <!-- 帮助列 -->
+                    <li>
+                        <a href="./help/preview/help.html" id="help_link">
+                            <i class="bi bi-question-square"></i>
+                            <span class="link_name">Help</span>
+                        </a>
+                        <ul class="sub-menu blank">
+                            <li><a class="link_name" href="./help/preview/help.html">Help</a></li>
+                        </ul>
+                    </li>
                     <!-- 退出列 -->
                     <li>
                         <%--通过linkbutton实现退出session清除--%>
@@ -225,9 +235,9 @@
                     sidebar.classList.toggle("close");
                 })
             </script>
-            <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-            <script src="./js/default.js"></script>
         </div>
     </form>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./js/default.js"></script>
 </body>
 </html>
