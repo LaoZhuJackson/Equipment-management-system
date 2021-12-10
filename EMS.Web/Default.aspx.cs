@@ -35,13 +35,21 @@ namespace EMS.Web
             }
         }
         /// <summary>
+        /// 进行页面定位
+        /// </summary>
+        /// <param name="page_num"></param>
+        public void page_select(String page_num)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "page_select", "<script type='text/javascript'>search_page('" + page_num + "');</script>");
+        }
+        /// <summary>
         /// 设备查询部分
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void search_Click(object sender, EventArgs e)
         {
-            if (visiterService.is_none(data_text.Text.Trim()))//如果是空值
+            if (visiterService.is_none(data_text.Text.Trim()) && select_drop_down_list.SelectedValue != "7")//如果是空值
             {
                 message = "查到一只兰陵王┐(￣ー￣)┌";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -103,6 +111,14 @@ namespace EMS.Web
                             ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
                         }
                         break;
+                    case "6":
+                        result_grid.DataSource = method.Search_ByDept(data_text.Text.Trim());
+                        result_grid.DataBind();
+                        break;
+                    case "7":
+                        result_grid.DataSource = method.Search_all();
+                        result_grid.DataBind();
+                        break;
                 }
                 //显示表格
                 result_grid.Visible = true;
@@ -122,7 +138,7 @@ namespace EMS.Web
         /// <param name="e"></param>
         protected void search_Click_dept(object sender, EventArgs e)
         {
-            if (visiterService.is_none(TextBox_dept.Text.Trim()))
+            if (visiterService.is_none(TextBox_dept.Text.Trim()) && DropDownList_dept.SelectedValue != "4")
             {
                 message = "查到一只兰陵王┐(￣ー￣)┌";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -156,6 +172,10 @@ namespace EMS.Web
                         GridView_dept.DataSource = method.Search_ByPerson_dept(Convert.ToInt32(TextBox_dept.Text.Trim()));
                         GridView_dept.DataBind();
                         break;
+                    case "4":
+                        GridView_dept.DataSource = method.Search_all_dept();
+                        GridView_dept.DataBind();
+                        break;
                 }
                 //显示表格
                 GridView_dept.Visible = true;
@@ -174,7 +194,7 @@ namespace EMS.Web
         /// <param name="e"></param>
         protected void search_Click_emp(object sender, EventArgs e)
         {
-            if (visiterService.is_none(TextBox_emp.Text.Trim()))
+            if (visiterService.is_none(TextBox_emp.Text.Trim()) && DropDownList_emp.SelectedValue != "4")
             {
                 message = "查到一只兰陵王┐(￣ー￣)┌";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -208,6 +228,10 @@ namespace EMS.Web
                         GridView_emp.DataSource = method.Search_ByDept_emp(TextBox_emp.Text.Trim());
                         GridView_emp.DataBind();
                         break;
+                    case "4":
+                        GridView_emp.DataSource = method.Search_all_emp();
+                        GridView_emp.DataBind();
+                        break;
                 }
                 GridView_emp.Visible = true;
             }
@@ -233,7 +257,7 @@ namespace EMS.Web
         //修改页面保存
         protected void save_click(object sender, EventArgs e)
         {
-            if(visiterService.is_none(oldpwd_text.Text.Trim())|| visiterService.is_none(newpwd_text.Text.Trim())|| visiterService.is_none(confirmpwd_text.Text.Trim()))
+            if (visiterService.is_none(oldpwd_text.Text.Trim()) || visiterService.is_none(newpwd_text.Text.Trim()) || visiterService.is_none(confirmpwd_text.Text.Trim()))
             {
                 message = "请输入完整(¬_¬)";
                 ClientScript.RegisterStartupScript(this.GetType(), "num_error", "<script type='text/javascript'>alert_message('" + message + "');</script>");
@@ -264,14 +288,6 @@ namespace EMS.Web
             }
             //页面定位
             page_select("4");
-        }
-        /// <summary>
-        /// 进行页面定位
-        /// </summary>
-        /// <param name="page_num"></param>
-        public void page_select(String page_num)
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "page_select", "<script type='text/javascript'>search_page('" + page_num + "');</script>");
         }
     }
 }

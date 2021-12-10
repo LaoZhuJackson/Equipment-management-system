@@ -130,6 +130,7 @@
                                 <asp:ListItem Value="4">存放位置</asp:ListItem>
                                 <asp:ListItem Value="5">负责人名称</asp:ListItem>
                                 <asp:ListItem Value="6">部门名称</asp:ListItem>
+                                <asp:ListItem Value="7">全部设备</asp:ListItem>
                             </asp:DropDownList>
                             <asp:TextBox ID="data_text" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="search_btn" runat="server" CssClass="button" OnClick="search_Click"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
@@ -159,6 +160,7 @@
                                 <asp:ListItem Selected="True" Value="1">部门编号</asp:ListItem>
                                 <asp:ListItem Value="2">部门名称</asp:ListItem>
                                 <asp:ListItem Value="3">负责人编号</asp:ListItem>
+                                <asp:ListItem Value="4">全部部门</asp:ListItem>
                             </asp:DropDownList>
                             <asp:TextBox ID="TextBox_dept" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="LinkButton_dept" runat="server" CssClass="button" OnClick="search_Click_dept"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
@@ -184,6 +186,7 @@
                                 <asp:ListItem Selected="True" Value="1">人员编号</asp:ListItem>
                                 <asp:ListItem Value="2">姓名</asp:ListItem>
                                 <asp:ListItem Value="3">部门名称</asp:ListItem>
+                                <asp:ListItem Value="4">全部人员</asp:ListItem>
                             </asp:DropDownList>
                             <asp:TextBox ID="TextBox_emp" runat="server" placeholder="Corresponding data..."></asp:TextBox>
                             <asp:LinkButton ID="LinkButton_emp" runat="server" CssClass="button" OnClick="search_Click_emp"><i class="bi bi-search"></i>&nbsp Search</asp:LinkButton>
@@ -235,9 +238,9 @@
                     sidebar.classList.toggle("close");
                 })
             </script>
+            <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+            <script src="./js/default.js"></script>
         </div>
     </form>
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="./js/default.js"></script>
 </body>
 </html>
